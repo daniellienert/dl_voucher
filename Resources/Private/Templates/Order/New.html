@@ -1,0 +1,45 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>New Order</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+
+<f:form method="post" action="create"  name="newOrder" object="{newOrder}">
+    <div>
+        <div >
+            <f:render partial="Order/FormFields" />
+        </div>
+        <div>
+            <f:for each="{voucherAlbum.items}" as="image">
+                <div>
+                    <label for="image-{image.uid}">
+                        <yag:image item="{image}" resolutionName="thumb" />
+                    </label>
+                    <f:form.radio name='voucherType' value="{image.uid}" id="image-{image.uid}"/>
+                </div>
+
+            </f:for>
+        </div>
+    </div>
+    <div>
+        <f:form.submit value="Weiter" />
+    </div>
+
+</f:form>
+</f:section>

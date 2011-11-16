@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Order a Voucher extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dlvoucher_domain_model_order">Order</label>
+			<label index="tx_dlvoucher_domain_model_order.info">info</label>
+			<label index="tx_dlvoucher_domain_model_order.voucher_type">voucherType</label>
+			<label index="tx_dlvoucher_domain_model_order.default_offer">defaultOffer</label>
+			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
+			<label index="tx_dlvoucher_domain_model_offer.name">name</label>
+			<label index="tx_dlvoucher_domain_model_offer.description">description</label>
+			<label index="tx_dlvoucher_domain_model_offer.type">type</label>
+			<label index="tx_dlvoucher_domain_model_offer.price">price</label>
+		</languageKey>
+	</data>
+</T3locallang>

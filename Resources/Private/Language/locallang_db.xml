@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'dl_voucher'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dlvoucher_domain_model_order">Order</label>
+			<label index="tx_dlvoucher_domain_model_order.info">Info</label>
+			<label index="tx_dlvoucher_domain_model_order.voucher_type">Voucher Type</label>
+			<label index="tx_dlvoucher_domain_model_order.default_offer">Default Offer</label>
+			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
+			<label index="tx_dlvoucher_domain_model_offer.name">Name</label>
+			<label index="tx_dlvoucher_domain_model_offer.description">Description</label>
+			<label index="tx_dlvoucher_domain_model_offer.type">Type</label>
+			<label index="tx_dlvoucher_domain_model_offer.price">Price</label>
+		</languageKey>
+	</data>
+</T3locallang>

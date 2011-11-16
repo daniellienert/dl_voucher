@@ -1,0 +1,18 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<h1>New Offer</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+
+<f:form method="post" action="create"  name="newOffer" object="{newOffer}">
+<div>
+    <f:render partial="Offer/FormFields" />
+</div>
+
+
+	<f:form.submit value="Create new" />
+</f:form>
+</f:section>

@@ -1,0 +1,30 @@
+plugin.tx_dlvoucher {
+	view {
+		templateRootPath = {$plugin.tx_dlvoucher.view.templateRootPath}
+		partialRootPath = {$plugin.tx_dlvoucher.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_dlvoucher.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_dlvoucher.persistence.storagePid}
+	}
+}
+
+plugin.tx_dlvoucher._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-dl-voucher table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-dl-voucher table th {
+		font-weight:bold;
+	}
+
+	.tx-dl-voucher table td {
+		vertical-align:top;
+	}
+)
