@@ -9,22 +9,14 @@ plugin.tx_dlvoucher {
 	}
 }
 
-plugin.tx_dlvoucher._CSS_DEFAULT_STYLE (
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
+page.includeCSS.dlVoucher = EXT:dl_voucher/Resources/Public/CSS/Style.css
 
-	.tx-dl-voucher table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
+plugin.tx_yag.settings.themes.dlVoucher {
 
-	.tx-dl-voucher table th {
-		font-weight:bold;
-	}
-
-	.tx-dl-voucher table td {
-		vertical-align:top;
-	}
-)
+    resolutionConfigs {
+ 		thumb {
+    		height = 130c
+    		width = 180c
+    	}
+    }
+}

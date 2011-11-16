@@ -1,0 +1,16 @@
+plugin.tx_dlvoucher {
+	persistence {
+		classes {
+			Tx_DlVoucher_Domain_Model_Order {
+				mapping {
+					columns {
+						tx_dlvoucher_from.mapOnProperty = from
+					
+						tx_dlvoucher_to.mapOnProperty = to
+					
+					}
+				}
+			}
+		}
+	}
+}

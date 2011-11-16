@@ -42,11 +42,28 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	protected $info;
 
 	/**
-	 * voucherType
+	 * voucherImage
 	 *
 	 * @var integer
+	 * @validate NotEmpty
 	 */
-	protected $voucherType;
+	protected $voucherImage;
+
+	/**
+	 * fromName
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $fromName;
+
+	/**
+	 * toName
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $toName;
 
 	/**
 	 * defaultOffer
@@ -84,22 +101,60 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	}
 
 	/**
-	 * Returns the voucherType
+	 * Returns the voucherImage
 	 *
-	 * @return integer $voucherType
+	 * @return integer $voucherImage
 	 */
-	public function getVoucherType() {
-		return $this->voucherType;
+	public function getVoucherImage() {
+		return $this->voucherImage;
 	}
 
 	/**
-	 * Sets the voucherType
+	 * Sets the voucherImage
 	 *
-	 * @param integer $voucherType
+	 * @param integer $voucherImage
 	 * @return void
 	 */
-	public function setVoucherType($voucherType) {
-		$this->voucherType = $voucherType;
+	public function setVoucherImage($voucherImage) {
+		$this->voucherImage = $voucherImage;
+	}
+
+	/**
+	 * Returns the fromName
+	 *
+	 * @return string $fromName
+	 */
+	public function getFromName() {
+		return $this->fromName;
+	}
+
+	/**
+	 * Sets the fromName
+	 *
+	 * @param string $fromName
+	 * @return void
+	 */
+	public function setFromName($fromName) {
+		$this->fromName = $fromName;
+	}
+
+	/**
+	 * Returns the toName
+	 *
+	 * @return string $toName
+	 */
+	public function getToName() {
+		return $this->toName;
+	}
+
+	/**
+	 * Sets the toName
+	 *
+	 * @param string $toName
+	 * @return void
+	 */
+	public function setToName($toName) {
+		$this->toName = $toName;
 	}
 
 	/**

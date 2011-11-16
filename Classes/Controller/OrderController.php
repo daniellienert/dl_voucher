@@ -78,7 +78,7 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	 */
 	public function newAction(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL) {
 
-		$this->objectManager->get('Tx_Yag_Utility_Bootstrap')->boot();
+		$this->objectManager->get('Tx_Yag_Utility_Bootstrap')->setTheme('dlVoucher')->boot();
 		$voucherAlbum = $this->albumRepository->findByUid(10); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
 		$this->view->assign('voucherAlbum', $voucherAlbum);

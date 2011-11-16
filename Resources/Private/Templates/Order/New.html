@@ -22,20 +22,23 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:form method="post" action="create"  name="newOrder" object="{newOrder}">
     <div>
-        <div >
+        <div class="page1Formular">
             <f:render partial="Order/FormFields" />
         </div>
-        <div>
+
+        <div class="page1ImageSelector">
             <f:for each="{voucherAlbum.items}" as="image">
-                <div>
+                <div class="voucherImage">
                     <label for="image-{image.uid}">
-                        <yag:image item="{image}" resolutionName="thumb" />
+                        <div><yag:image item="{image}" resolutionName="thumb" /></div>
+                        <div>{image.title}</div>
                     </label>
                     <f:form.radio name='voucherType' value="{image.uid}" id="image-{image.uid}"/>
                 </div>
 
             </f:for>
         </div>
+
     </div>
     <div>
         <f:form.submit value="Weiter" />

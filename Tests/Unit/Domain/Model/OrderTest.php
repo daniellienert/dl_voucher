@@ -71,22 +71,56 @@ class Tx_DlVoucher_Domain_Model_OrderTest extends Tx_Extbase_Tests_Unit_BaseTest
 	/**
 	 * @test
 	 */
-	public function getVoucherTypeReturnsInitialValueForInteger() { 
+	public function getVoucherImageReturnsInitialValueForInteger() { 
 		$this->assertSame(
 			0,
-			$this->fixture->getVoucherType()
+			$this->fixture->getVoucherImage()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setVoucherTypeForIntegerSetsVoucherType() { 
-		$this->fixture->setVoucherType(12);
+	public function setVoucherImageForIntegerSetsVoucherImage() { 
+		$this->fixture->setVoucherImage(12);
 
 		$this->assertSame(
 			12,
-			$this->fixture->getVoucherType()
+			$this->fixture->getVoucherImage()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getFromNameReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setFromNameForStringSetsFromName() { 
+		$this->fixture->setFromName('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getFromName()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getToNameReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setToNameForStringSetsToName() { 
+		$this->fixture->setToName('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getToName()
 		);
 	}
 	

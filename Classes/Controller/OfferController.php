@@ -41,8 +41,6 @@ class Tx_DlVoucher_Controller_OfferController extends Tx_Extbase_MVC_Controller_
 	 */
 	protected $offerRepository;
 
-
-
 	/**
 	 * injectOfferRepository
 	 *
@@ -52,7 +50,6 @@ class Tx_DlVoucher_Controller_OfferController extends Tx_Extbase_MVC_Controller_
 	public function injectOfferRepository(Tx_DlVoucher_Domain_Repository_OfferRepository $offerRepository) {
 		$this->offerRepository = $offerRepository;
 	}
-
 
 	/**
 	 * action list
@@ -82,7 +79,6 @@ class Tx_DlVoucher_Controller_OfferController extends Tx_Extbase_MVC_Controller_
 	 * @return void
 	 */
 	public function newAction(Tx_DlVoucher_Domain_Model_Offer $newOffer = NULL) {
-
 		$this->view->assign('newOffer', $newOffer);
 	}
 

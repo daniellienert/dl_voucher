@@ -8,7 +8,9 @@
 		<languageKey index="default" type="array">
 			<label index="tx_dlvoucher_domain_model_order">Order</label>
 			<label index="tx_dlvoucher_domain_model_order.info">Info</label>
-			<label index="tx_dlvoucher_domain_model_order.voucher_type">Voucher Type</label>
+			<label index="tx_dlvoucher_domain_model_order.voucher_image">Voucher Image</label>
+			<label index="tx_dlvoucher_domain_model_order.from_name">From Name</label>
+			<label index="tx_dlvoucher_domain_model_order.to_name">To Name</label>
 			<label index="tx_dlvoucher_domain_model_order.default_offer">Default Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer.name">Name</label>

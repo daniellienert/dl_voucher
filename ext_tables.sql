@@ -7,7 +7,9 @@ CREATE TABLE tx_dlvoucher_domain_model_order (
 
 
 	info text NOT NULL,
-	voucher_type int(11) DEFAULT '0' NOT NULL,
+	voucher_image int(11) DEFAULT '0' NOT NULL,
+	from_name varchar(255) DEFAULT '' NOT NULL,
+	to_name varchar(255) DEFAULT '' NOT NULL,
 	default_offer int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,

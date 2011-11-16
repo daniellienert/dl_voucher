@@ -1,14 +1,14 @@
-<label for="info">
-	Für:
+<label for="fromName">
+	<f:translate key="tx_dlvoucher_domain_model_order.from_name" /> <span class="required">(required)</span>
 </label><br />
-	<f:form.textfield name="for" /><br />
+	<f:form.textfield property="fromName" /><br />
 
-<label for="info">
-	Von:
+<label for="toName">
+	<f:translate key="tx_dlvoucher_domain_model_order.to_name" /> <span class="required">(required)</span>
 </label><br />
-	<f:form.textfield name="from" /><br />
+	<f:form.textfield property="toName" /><br />
+
 <label for="info">
 	<f:translate key="tx_dlvoucher_domain_model_order.info" />
 </label><br />
 	<f:form.textarea property="info" cols="30" rows="5" /><br />
-        

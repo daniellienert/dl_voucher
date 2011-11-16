@@ -8,7 +8,9 @@
 	<data type="array">
 	<languageKey index="default" type="array">
 			<label index="info.description">info</label>
-			<label index="voucher_type.description">voucherType</label>
+			<label index="voucher_image.description">voucherImage</label>
+			<label index="from_name.description">fromName</label>
+			<label index="to_name.description">toName</label>
 			<label index="default_offer.description">defaultOffer</label>
 		</languageKey>
 	</data>
