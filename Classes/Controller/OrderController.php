@@ -43,6 +43,12 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 
 
 	/**
+	 * @var Tx_DlVoucher_Domain_Repository_OfferRepository
+	 */
+	protected $offerRepository;
+
+
+	/**
 	 * @var Tx_Yag_Domain_Repository_AlbumRepository
 	 */
 	protected $albumRepository;
@@ -69,6 +75,16 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->orderRepository = $orderRepository;
 	}
 
+
+	/**
+	 * @param Tx_DlVoucher_Domain_Repository_OfferRepository $offerRepository
+	 * @return void
+	 */
+	public function injectOfferRepository(Tx_DlVoucher_Domain_Repository_OfferRepository $offerRepository) {
+		$this->offerRepository = $offerRepository;
+	}
+
+
 	/**
 	 * action new
 	 *
@@ -81,6 +97,7 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->objectManager->get('Tx_Yag_Utility_Bootstrap')->setTheme('dlVoucher')->boot();
 		$voucherAlbum = $this->albumRepository->findByUid(10); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
+		$this->view->assign('offers', $this->offerRepository->findAll());
 		$this->view->assign('voucherAlbum', $voucherAlbum);
 
 		$this->view->assign('newOrder', $newOrder);

@@ -23,7 +23,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:form method="post" action="create"  name="newOrder" object="{newOrder}">
     <div>
         <div class="page1Formular">
-            <f:render partial="Order/FormFields" />
+            <f:render partial="Order/FormFields" arguments="{offers:offers}"/>
         </div>
 
         <div class="page1ImageSelector">

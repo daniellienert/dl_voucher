@@ -11,6 +11,7 @@
 			<label index="voucher_image.description">voucherImage</label>
 			<label index="from_name.description">fromName</label>
 			<label index="to_name.description">toName</label>
+			<label index="amount.description">amount</label>
 			<label index="default_offer.description">defaultOffer</label>
 		</languageKey>
 	</data>

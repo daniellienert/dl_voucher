@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_dlvoucher_domain_model_order'] = array(
 	'ctrl' => $TCA['tx_dlvoucher_domain_model_order']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, info, voucher_image, from_name, to_name, default_offer',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, info, voucher_image, from_name, to_name, amount, default_offer',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, info, voucher_image, from_name, to_name, default_offer,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, info, voucher_image, from_name, to_name, amount, default_offer,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -128,6 +128,15 @@ $TCA['tx_dlvoucher_domain_model_order'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
+			),
+		),
+		'amount' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.amount',
+			'config' => array(
+				'type' => 'input',
+				'size' => 4,
+				'eval' => 'int,required'
 			),
 		),
 		'default_offer' => array(

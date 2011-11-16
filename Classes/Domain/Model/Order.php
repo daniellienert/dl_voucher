@@ -66,6 +66,14 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	protected $toName;
 
 	/**
+	 * amount
+	 *
+	 * @var integer
+	 * @validate NotEmpty
+	 */
+	protected $amount;
+
+	/**
 	 * defaultOffer
 	 *
 	 * @var Tx_DlVoucher_Domain_Model_Offer
@@ -155,6 +163,25 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function setToName($toName) {
 		$this->toName = $toName;
+	}
+
+	/**
+	 * Returns the amount
+	 *
+	 * @return integer $amount
+	 */
+	public function getAmount() {
+		return $this->amount;
+	}
+
+	/**
+	 * Sets the amount
+	 *
+	 * @param integer $amount
+	 * @return void
+	 */
+	public function setAmount($amount) {
+		$this->amount = $amount;
 	}
 
 	/**

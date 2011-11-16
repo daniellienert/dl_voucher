@@ -1,4 +1,10 @@
 <label for="fromName">
+	<f:translate key="tx_dlvoucher_domain_model_order.defaultOffer" />
+</label><br />
+	<f:form.select property="defaultOffer" options="{offers}" optionValueField="uid" optionLabelField="name"/><br />
+
+
+<label for="fromName">
 	<f:translate key="tx_dlvoucher_domain_model_order.from_name" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="fromName" /><br />

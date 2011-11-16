@@ -127,6 +127,28 @@ class Tx_DlVoucher_Domain_Model_OrderTest extends Tx_Extbase_Tests_Unit_BaseTest
 	/**
 	 * @test
 	 */
+	public function getAmountReturnsInitialValueForInteger() { 
+		$this->assertSame(
+			0,
+			$this->fixture->getAmount()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setAmountForIntegerSetsAmount() { 
+		$this->fixture->setAmount(12);
+
+		$this->assertSame(
+			12,
+			$this->fixture->getAmount()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
 	public function getDefaultOfferReturnsInitialValueForTx_DlVoucher_Domain_Model_Offer() { }
 
 	/**
