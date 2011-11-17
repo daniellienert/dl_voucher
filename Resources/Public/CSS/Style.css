@@ -31,3 +31,6 @@ input.f3-form-error {
     float:left;
 }
 
+.required {
+    color:red;
+}

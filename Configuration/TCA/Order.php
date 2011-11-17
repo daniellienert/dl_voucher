@@ -112,6 +112,7 @@ $TCA['tx_dlvoucher_domain_model_order'] = array(
 				'eval' => 'int,required'
 			),
 		),
+
 		'from_name' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.from_name',
@@ -146,6 +147,16 @@ $TCA['tx_dlvoucher_domain_model_order'] = array(
 				'type' => 'select',
 				'foreign_table' => 'tx_dlvoucher_domain_model_offer',
 				'minitems' => 0,
+				'maxitems' => 1,
+			),
+		),
+		'customer' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.customer',
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'fe_user',
+				'minitems' => 1,
 				'maxitems' => 1,
 			),
 		),

@@ -32,7 +32,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEntity implements Tx_PtExtbase_State_Session_SessionPersistableInterface {
 
 	/**
 	 * info
@@ -69,7 +69,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * amount
 	 *
 	 * @var integer
-	 * @validate NotEmpty
 	 */
 	protected $amount;
 
@@ -79,6 +78,13 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @var Tx_DlVoucher_Domain_Model_Offer
 	 */
 	protected $defaultOffer;
+
+
+	/**
+	 * @var Tx_DlVoucher_Domain_Model_Customer
+	 */
+	protected $customer;
+
 
 	/**
 	 * __construct
@@ -202,6 +208,21 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	public function setDefaultOffer(Tx_DlVoucher_Domain_Model_Offer $defaultOffer) {
 		$this->defaultOffer = $defaultOffer;
 	}
+
+	/**
+	 * @param \Tx_DlVoucher_Domain_Model_Customer $customer
+	 */
+	public function setCustomer($customer) {
+		$this->customer = $customer;
+	}
+
+	/**
+	 * @return \Tx_DlVoucher_Domain_Model_Customer
+	 */
+	public function getCustomer() {
+		return $this->customer;
+	}
+
 
 }
 ?>

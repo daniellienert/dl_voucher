@@ -6,18 +6,30 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index="tx_dlvoucher_common.yes">Ja</label>
+			<label index="tx_dlvoucher_common.no">Nein</label>
+
 			<label index="tx_dlvoucher_domain_model_order">Order</label>
-			<label index="tx_dlvoucher_domain_model_order.info">info</label>
+			<label index="tx_dlvoucher_domain_model_order.info">Grußtext</label>
+			<label index="tx_dlvoucher_domain_model_order.printAmount">Betrag auf dem Gutschein anzeigen?</label>
 			<label index="tx_dlvoucher_domain_model_order.voucher_image">voucherImage</label>
-			<label index="tx_dlvoucher_domain_model_order.from_name">fromName</label>
-			<label index="tx_dlvoucher_domain_model_order.to_name">toName</label>
-			<label index="tx_dlvoucher_domain_model_order.amount">amount</label>
-			<label index="tx_dlvoucher_domain_model_order.default_offer">defaultOffer</label>
+			<label index="tx_dlvoucher_domain_model_order.from_name">Von</label>
+			<label index="tx_dlvoucher_domain_model_order.to_name">Für</label>
+			<label index="tx_dlvoucher_domain_model_order.amount">Betrag</label>
+			<label index="tx_dlvoucher_domain_model_order.default_offer">Unser Angebot</label>
+
 			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer.name">name</label>
-			<label index="tx_dlvoucher_domain_model_offer.description">description</label>
+			<label index="tx_dlvoucher_domain_model_offer.description">Beschreibung</label>
 			<label index="tx_dlvoucher_domain_model_offer.type">type</label>
 			<label index="tx_dlvoucher_domain_model_offer.price">price</label>
+
+            <label index="tx_dlvoucher_domain_model_customer.firstName">Vorname</label>
+            <label index="tx_dlvoucher_domain_model_customer.lastName">Nachname</label>
+            <label index="tx_dlvoucher_domain_model_customer.address">Strasse</label>
+            <label index="tx_dlvoucher_domain_model_customer.zip">PLZ</label>
+            <label index="tx_dlvoucher_domain_model_customer.city">Ort</label>
+            <label index="tx_dlvoucher_domain_model_customer.email">eMail</label>
 		</languageKey>
 	</data>
 </T3locallang>
