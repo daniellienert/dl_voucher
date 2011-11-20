@@ -1,48 +1,105 @@
-<label for="info">
-	<f:translate key="tx_dlvoucher_domain_model_order.info" />
-</label><br />
-	<f:form.textarea property="info" cols="40" rows="15" /><br />
-<label for="voucherImage">
-	<f:translate key="tx_dlvoucher_domain_model_order.voucher_image" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="voucherImage" /><br />
-<label for="fromName">
-	<f:translate key="tx_dlvoucher_domain_model_order.from_name" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="fromName" /><br />
-<label for="toName">
-	<f:translate key="tx_dlvoucher_domain_model_order.to_name" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="toName" /><br />
-<label for="amount">
-	<f:translate key="tx_dlvoucher_domain_model_order.amount" />
-</label><br />
-	<f:form.textfield property="amount" /><br />
-<label for="firstName">
-	<f:translate key="tx_dlvoucher_domain_model_order.first_name" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="firstName" /><br />
-<label for="lastName">
-	<f:translate key="tx_dlvoucher_domain_model_order.last_name" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="lastName" /><br />
-<label for="street">
-	<f:translate key="tx_dlvoucher_domain_model_order.street" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="street" /><br />
-<label for="zip">
-	<f:translate key="tx_dlvoucher_domain_model_order.zip" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="zip" /><br />
-<label for="city">
-	<f:translate key="tx_dlvoucher_domain_model_order.city" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="city" /><br />
-<label for="country">
-	<f:translate key="tx_dlvoucher_domain_model_order.country" />
-</label><br />
-	<f:form.textfield property="country" /><br />
-<label for="email">
-	<f:translate key="tx_dlvoucher_domain_model_order.email" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="email" /><br />
+{namespace yag=Tx_Yag_ViewHelpers}
+
+<div id="tabs">
+	<ul>
+		<li><a href="#voucherCreator">Gutschein</a></li>
+		<li><a href="#invoiceData">Rechnungsdaten</a></li>
+	</ul>
+
+    <div id="voucherCreator">
+        <div class="formular">
+
+            <label for="offer">
+                <f:translate key="tx_dlvoucher_domain_model_order.offer" />
+            </label><br />
+                <f:form.select property="offer" options="{offers}" optionValueField="uid" optionLabelField="name" /><br />
+
+            <label for="amount">
+                <f:translate key="tx_dlvoucher_domain_model_order.amount" />
+            </label><br />
+                <f:form.textfield property="amount" /><br />
+
+
+            <label for="fromName">
+                <f:translate key="tx_dlvoucher_domain_model_order.from_name" />
+            </label><br />
+                <f:form.textfield property="fromName" /><br />
+
+            <label for="toName">
+                <f:translate key="tx_dlvoucher_domain_model_order.to_name" />
+            </label><br />
+                <f:form.textfield property="toName" /><br />
+
+            <label for="info">
+                <f:translate key="tx_dlvoucher_domain_model_order.info" />
+            </label><br />
+                <f:form.textarea property="info" cols="40" rows="15" /><br />
+
+            <label for="printAmount">
+                <f:translate key="tx_dlvoucher_domain_model_order.print_amount" /><span class="required">*</span>
+            </label><br />
+                <f:form.checkbox property="printAmount" value="1" /><br />
+        </div>
+        
+        <div class="imageSelector">
+           <f:for each="{voucherAlbum.items}" as="image">
+               <div class="voucherImage">
+                   <label for="image-{image.uid}">
+                       <div><yag:image item="{image}" resolutionName="thumb" /></div>
+                       <div><f:form.radio property="voucherImage" value="{image.uid}" id="image-{image.uid}"/> {image.title}</div>
+                   </label>
+
+               </div>
+
+           </f:for>
+       </div>
+    </div>
+
+
+    <div id="invoiceData">
+        <div style="float:left;">
+            <label for="firstName">
+                <f:translate key="tx_dlvoucher_domain_model_order.first_name" /><span class="required">*</span>
+            </label><br />
+                <f:form.textfield property="firstName" />
+        </div>
+
+        <div style="">
+            <label for="lastName">
+                <f:translate key="tx_dlvoucher_domain_model_order.last_name" /><span class="required">*</span>
+            </label><br />
+                <f:form.textfield property="lastName" />
+        </div>
+        
+        <label for="street">
+            <f:translate key="tx_dlvoucher_domain_model_order.street" /><span class="required">*</span>
+        </label><br />
+            <f:form.textfield property="street" /><br />
+
+        <div style="float:left;">
+            <label for="zip">
+                <f:translate key="tx_dlvoucher_domain_model_order.zip" /><span class="required">*</span>
+            </label><br />
+                <f:form.textfield property="zip" />
+        </div>
+
+        <div>
+        <label for="city">
+            <f:translate key="tx_dlvoucher_domain_model_order.city" /><span class="required">*</span>
+        </label><br />
+            <f:form.textfield property="city" /><br />
+        </div>
+        
+        <label for="email">
+            <f:translate key="tx_dlvoucher_domain_model_order.email" /><span class="required">*</span>
+        </label><br />
+            <f:form.textfield property="email" /><br />
+
+
+        <label for="agbAccepted">
+            <f:translate key="tx_dlvoucher_domain_model_order.agb_accepted" /><span class="required">*</span>
+        </label><br />
+            <f:form.checkbox property="agbAccepted" value="1" /><br />
+    </div>
+
+</div>

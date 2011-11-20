@@ -19,6 +19,8 @@
 			<label index="tx_dlvoucher_domain_model_order.city">City</label>
 			<label index="tx_dlvoucher_domain_model_order.country">Country</label>
 			<label index="tx_dlvoucher_domain_model_order.email">Email</label>
+			<label index="tx_dlvoucher_domain_model_order.print_amount">Print Amount</label>
+			<label index="tx_dlvoucher_domain_model_order.agb_accepted">Agb Accepted</label>
 			<label index="tx_dlvoucher_domain_model_order.offer">Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer.name">Name</label>

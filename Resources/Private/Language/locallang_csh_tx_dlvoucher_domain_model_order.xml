@@ -19,6 +19,8 @@
 			<label index="city.description">city</label>
 			<label index="country.description">country</label>
 			<label index="email.description">email</label>
+			<label index="print_amount.description">printAmount</label>
+			<label index="agb_accepted.description">agbAccepted</label>
 			<label index="offer.description">offer</label>
 		</languageKey>
 	</data>

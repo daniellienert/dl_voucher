@@ -53,7 +53,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * fromName
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 */
 	protected $fromName;
 
@@ -61,7 +60,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * toName
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 */
 	protected $toName;
 
@@ -126,6 +124,20 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @validate NotEmpty
 	 */
 	protected $email;
+
+	/**
+	 * printAmount
+	 *
+	 * @var boolean
+	 */
+	protected $printAmount = false;
+
+	/**
+	 * agbAccepted
+	 *
+	 * @var boolean
+	 */
+	protected $agbAccepted = false;
 
 	/**
 	 * offer
@@ -369,6 +381,62 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function setEmail($email) {
 		$this->email = $email;
+	}
+
+	/**
+	 * Returns the printAmount
+	 *
+	 * @return boolean $printAmount
+	 */
+	public function getPrintAmount() {
+		return(bool) $this->printAmount;
+	}
+
+	/**
+	 * Sets the printAmount
+	 *
+	 * @param boolean $printAmount
+	 * @return void
+	 */
+	public function setPrintAmount($printAmount) {
+		$this->printAmount = $printAmount;
+	}
+
+	/**
+	 * Returns the boolean state of printAmount
+	 *
+	 * @return boolean
+	 */
+	public function isPrintAmount() {
+		return $this->getPrintAmount();
+	}
+
+	/**
+	 * Returns the agbAccepted
+	 *
+	 * @return boolean $agbAccepted
+	 */
+	public function getAgbAccepted() {
+		return (bool) $this->agbAccepted;
+	}
+
+	/**
+	 * Sets the agbAccepted
+	 *
+	 * @param boolean $agbAccepted
+	 * @return void
+	 */
+	public function setAgbAccepted($agbAccepted) {
+		$this->agbAccepted = $agbAccepted;
+	}
+
+	/**
+	 * Returns the boolean state of agbAccepted
+	 *
+	 * @return boolean
+	 */
+	public function isAgbAccepted() {
+		return $this->getAgbAccepted();
 	}
 
 	/**

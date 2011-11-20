@@ -95,12 +95,20 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->objectManager->get('Tx_Yag_Utility_Bootstrap')->setTheme('dlVoucher')->boot();
 		$voucherAlbum = $this->albumRepository->findByUid(10); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
+		if($newOrder == NULL) {
+			$newOrder = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
+			$newOrder->setVoucherImage($voucherAlbum->getItems()->current()->getUid());
+		}
+
+
+
 		$this->view->assign('offers', $this->offerRepository->findAll());
 		$this->view->assign('voucherAlbum', $voucherAlbum);
 
 		$this->view->assign('newOrder', $newOrder);
 	}
 
+	
 	/**
 	 * action create
 	 *

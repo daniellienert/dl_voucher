@@ -1,32 +1,17 @@
-{namespace yag=Tx_Yag_ViewHelpers}
+
 
 <f:layout name="Default" />
 
 <f:section name="main">
-<h1>New Order</h1>
+<h1>Gutschein bestellen</h1>
 
 <f:flashMessages />
 
 <f:render partial="FormErrors" />
 
-<f:form method="post" action="step2"  name="newOrder" object="{newOrder}">
+<f:form method="post" action="create"  name="newOrder" object="{newOrder}">
     <div>
-        <div class="formular">
-            <f:render partial="Order/FormFields" arguments="{offers:offers}"/>
-        </div>
-
-        <div class="imageSelector">
-            <f:for each="{voucherAlbum.items}" as="image">
-                <div class="voucherImage">
-                    <label for="image-{image.uid}">
-                        <div><yag:image item="{image}" resolutionName="thumb" /></div>
-                        <div><f:form.radio property="voucherImage" value="{image.uid}" id="image-{image.uid}"/> {image.title}</div>
-                    </label>
-
-                </div>
-
-            </f:for>
-        </div>
+        <f:render partial="Order/FormFields" arguments="{offers:offers, voucherAlbum:voucherAlbum}"/>
 
     </div>
     <div>

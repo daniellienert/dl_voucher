@@ -273,6 +273,50 @@ class Tx_DlVoucher_Domain_Model_OrderTest extends Tx_Extbase_Tests_Unit_BaseTest
 	/**
 	 * @test
 	 */
+	public function getPrintAmountReturnsInitialValueForBoolean() { 
+		$this->assertSame(
+			TRUE,
+			$this->fixture->getPrintAmount()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setPrintAmountForBooleanSetsPrintAmount() { 
+		$this->fixture->setPrintAmount(TRUE);
+
+		$this->assertSame(
+			TRUE,
+			$this->fixture->getPrintAmount()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getAgbAcceptedReturnsInitialValueForBoolean() { 
+		$this->assertSame(
+			TRUE,
+			$this->fixture->getAgbAccepted()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setAgbAcceptedForBooleanSetsAgbAccepted() { 
+		$this->fixture->setAgbAccepted(TRUE);
+
+		$this->assertSame(
+			TRUE,
+			$this->fixture->getAgbAccepted()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
 	public function getOfferReturnsInitialValueForTx_DlVoucher_Domain_Model_Offer() { }
 
 	/**

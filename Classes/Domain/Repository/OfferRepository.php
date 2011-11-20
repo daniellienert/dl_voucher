@@ -34,5 +34,17 @@
  */
 class Tx_DlVoucher_Domain_Repository_OfferRepository extends Tx_Extbase_Persistence_Repository {
 
+		/**
+	 * Constructor of the repository.
+	 * Sets the respect storage page to false.
+	 * @param Tx_Extbase_Object_ObjectManagerInterface $objectManager
+	 */
+	public function __construct(Tx_Extbase_Object_ObjectManagerInterface $objectManager = NULL) {
+		 parent::__construct($objectManager);
+		 $this->defaultQuerySettings = new Tx_Extbase_Persistence_Typo3QuerySettings();
+		 $this->defaultQuerySettings->setRespectStoragePage(FALSE);
+		 $this->defaultQuerySettings->setRespectSysLanguage(FALSE);
+	}
+
 }
 ?>

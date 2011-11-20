@@ -18,6 +18,8 @@ CREATE TABLE tx_dlvoucher_domain_model_order (
 	city varchar(255) DEFAULT '' NOT NULL,
 	country varchar(255) DEFAULT '' NOT NULL,
 	email varchar(255) DEFAULT '' NOT NULL,
+	print_amount tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	agb_accepted tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	offer int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
