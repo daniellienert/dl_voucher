@@ -149,12 +149,136 @@ class Tx_DlVoucher_Domain_Model_OrderTest extends Tx_Extbase_Tests_Unit_BaseTest
 	/**
 	 * @test
 	 */
-	public function getDefaultOfferReturnsInitialValueForTx_DlVoucher_Domain_Model_Offer() { }
+	public function getFirstNameReturnsInitialValueForString() { }
 
 	/**
 	 * @test
 	 */
-	public function setDefaultOfferForTx_DlVoucher_Domain_Model_OfferSetsDefaultOffer() { }
+	public function setFirstNameForStringSetsFirstName() { 
+		$this->fixture->setFirstName('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getFirstName()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getLastNameReturnsInitialValueForInteger() { 
+		$this->assertSame(
+			0,
+			$this->fixture->getLastName()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setLastNameForIntegerSetsLastName() { 
+		$this->fixture->setLastName(12);
+
+		$this->assertSame(
+			12,
+			$this->fixture->getLastName()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getStreetReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setStreetForStringSetsStreet() { 
+		$this->fixture->setStreet('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getStreet()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getZipReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setZipForStringSetsZip() { 
+		$this->fixture->setZip('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getZip()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getCityReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setCityForStringSetsCity() { 
+		$this->fixture->setCity('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getCity()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getCountryReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setCountryForStringSetsCountry() { 
+		$this->fixture->setCountry('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getCountry()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getEmailReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setEmailForStringSetsEmail() { 
+		$this->fixture->setEmail('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getEmail()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getOfferReturnsInitialValueForTx_DlVoucher_Domain_Model_Offer() { }
+
+	/**
+	 * @test
+	 */
+	public function setOfferForTx_DlVoucher_Domain_Model_OfferSetsOffer() { }
 	
 }
 ?>

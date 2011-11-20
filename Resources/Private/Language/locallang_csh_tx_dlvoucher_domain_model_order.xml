@@ -12,7 +12,14 @@
 			<label index="from_name.description">fromName</label>
 			<label index="to_name.description">toName</label>
 			<label index="amount.description">amount</label>
-			<label index="default_offer.description">defaultOffer</label>
+			<label index="first_name.description">firstName</label>
+			<label index="last_name.description">lastName</label>
+			<label index="street.description">street</label>
+			<label index="zip.description">zip</label>
+			<label index="city.description">city</label>
+			<label index="country.description">country</label>
+			<label index="email.description">email</label>
+			<label index="offer.description">offer</label>
 		</languageKey>
 	</data>
 </T3locallang>

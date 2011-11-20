@@ -12,7 +12,14 @@
 			<label index="tx_dlvoucher_domain_model_order.from_name">From Name</label>
 			<label index="tx_dlvoucher_domain_model_order.to_name">To Name</label>
 			<label index="tx_dlvoucher_domain_model_order.amount">Amount</label>
-			<label index="tx_dlvoucher_domain_model_order.default_offer">Default Offer</label>
+			<label index="tx_dlvoucher_domain_model_order.first_name">First Name</label>
+			<label index="tx_dlvoucher_domain_model_order.last_name">Last Name</label>
+			<label index="tx_dlvoucher_domain_model_order.street">Street</label>
+			<label index="tx_dlvoucher_domain_model_order.zip">Zip</label>
+			<label index="tx_dlvoucher_domain_model_order.city">City</label>
+			<label index="tx_dlvoucher_domain_model_order.country">Country</label>
+			<label index="tx_dlvoucher_domain_model_order.email">Email</label>
+			<label index="tx_dlvoucher_domain_model_order.offer">Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
 			<label index="tx_dlvoucher_domain_model_offer.name">Name</label>
 			<label index="tx_dlvoucher_domain_model_offer.description">Description</label>

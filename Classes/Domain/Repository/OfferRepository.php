@@ -34,16 +34,5 @@
  */
 class Tx_DlVoucher_Domain_Repository_OfferRepository extends Tx_Extbase_Persistence_Repository {
 
-	/*
-	 * Create and alter the query object
-	 * @return Tx_Extbase_Persistence_QueryInterface
-	 */
-	public function createQuery() {
-		$query = parent::createQuery();
-		$query->getQuerySettings()->setRespectSysLanguage(FALSE);
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-		return $query;
-	}
-
 }
 ?>

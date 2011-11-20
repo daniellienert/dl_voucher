@@ -54,11 +54,6 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	protected $albumRepository;
 
 
-	/**
-	 * @var Tx_PtExtbase_State_Session_SessionPersistenceManager
-	 */
-	protected $sessionPersistanceManager;
-
 
 	/**
 	 * @param Tx_Yag_Domain_Repository_AlbumRepository $albumRepository
@@ -68,7 +63,7 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->albumRepository = $albumRepository;
 	}
 
-	
+
 	/**
 	 * injectOrderRepository
 	 *
@@ -88,17 +83,6 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->offerRepository = $offerRepository;
 	}
 
-
-
-
-	/**
-	 * @return void
-	 */
-	public function initializeAction() {
-		Tx_PtExtbase_State_Session_SessionPersistenceManagerFactory::getInstance()->init();
-	}
-
-
 	/**
 	 * action new
 	 *
@@ -117,39 +101,15 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->view->assign('newOrder', $newOrder);
 	}
 
-
-	/**
-	 * @param Tx_DlVoucher_Domain_Model_Order $newOrder
-	 * @param Tx_DlVoucher_Domain_Model_Customer $newCustomer
-	 * @dontvalidate $newCustomer
-	 * @return void
-	 */
-	public function step2Action(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL, Tx_DlVoucher_Domain_Model_Customer $newCustomer = NULL) {
-
-		$this->view->assign('newCustomer', $newCustomer);
-	}
-
-
 	/**
 	 * action create
 	 *
 	 * @param $newOrder
 	 * @return void
 	 */
-	public function createAction(Tx_DlVoucher_Domain_Model_Customer $newCustomer) {
-		
-		$order = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order'); /** @var $order Tx_DlVoucher_Domain_Model_Order */
-		$this->sessionPersistanceManager->loadFromSession($order);
-
-		$order->setCustomer($newCustomer);
-
-		$this->orderRepository->add($order);
-		
-		/*
+	public function createAction(Tx_DlVoucher_Domain_Model_Order $newOrder) {
 		$this->orderRepository->add($newOrder);
 		$this->flashMessageContainer->add('Your new Order was created.');
-		$this->redirect('list');
-		*/
 	}
 
 }

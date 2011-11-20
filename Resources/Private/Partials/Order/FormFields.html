@@ -1,35 +1,48 @@
-<label for="defaultOffer">
-	<f:translate key="tx_dlvoucher_domain_model_order.default_offer" />
-</label><br />
-	<f:form.select property="defaultOffer" options="{offers}" optionValueField="uid" optionLabelField="name" id="defaultOffer"/><br />
-
-<label for="amount">
-	<f:translate key="tx_dlvoucher_domain_model_order.amount" />
-</label><br />
-	<f:form.textfield property="amount" id="amount"/><br />
-
-<label for="fromName">
-	<f:translate key="tx_dlvoucher_domain_model_order.from_name" /><span class="required">*</span>
-</label><br />
-	<f:form.textfield property="fromName" id="fromName"/><br />
-
-<label for="toName">
-	<f:translate key="tx_dlvoucher_domain_model_order.to_name" /><span class="required">*</span>
-</label><br />
-	<f:form.textfield property="toName" id="toName"/><br />
-
 <label for="info">
 	<f:translate key="tx_dlvoucher_domain_model_order.info" />
 </label><br />
-	<f:form.textarea property="info" cols="30" rows="5" id="info"/><br />
-
-
-<f:translate key="tx_dlvoucher_domain_model_order.printAmount" />
-<br />
-<f:form.radio name="printAmount" id="printAmount" value="0"/>
-<label for="printAmount"><f:translate key="tx_dlvoucher_common.no" /></label>
-
-<f:form.radio name="printAmount" id="printAmount" value="1"/>
-<label for="printAmount"><f:translate key="tx_dlvoucher_common.yes" /></label>
-
-
+	<f:form.textarea property="info" cols="40" rows="15" /><br />
+<label for="voucherImage">
+	<f:translate key="tx_dlvoucher_domain_model_order.voucher_image" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="voucherImage" /><br />
+<label for="fromName">
+	<f:translate key="tx_dlvoucher_domain_model_order.from_name" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="fromName" /><br />
+<label for="toName">
+	<f:translate key="tx_dlvoucher_domain_model_order.to_name" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="toName" /><br />
+<label for="amount">
+	<f:translate key="tx_dlvoucher_domain_model_order.amount" />
+</label><br />
+	<f:form.textfield property="amount" /><br />
+<label for="firstName">
+	<f:translate key="tx_dlvoucher_domain_model_order.first_name" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="firstName" /><br />
+<label for="lastName">
+	<f:translate key="tx_dlvoucher_domain_model_order.last_name" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="lastName" /><br />
+<label for="street">
+	<f:translate key="tx_dlvoucher_domain_model_order.street" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="street" /><br />
+<label for="zip">
+	<f:translate key="tx_dlvoucher_domain_model_order.zip" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="zip" /><br />
+<label for="city">
+	<f:translate key="tx_dlvoucher_domain_model_order.city" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="city" /><br />
+<label for="country">
+	<f:translate key="tx_dlvoucher_domain_model_order.country" />
+</label><br />
+	<f:form.textfield property="country" /><br />
+<label for="email">
+	<f:translate key="tx_dlvoucher_domain_model_order.email" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="email" /><br />

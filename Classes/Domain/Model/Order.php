@@ -32,7 +32,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEntity implements Tx_PtExtbase_State_Session_SessionPersistableInterface {
+class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEntity {
 
 	/**
 	 * info
@@ -73,18 +73,66 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	protected $amount;
 
 	/**
-	 * defaultOffer
+	 * firstName
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $firstName;
+
+	/**
+	 * lastName
+	 *
+	 * @var integer
+	 * @validate NotEmpty
+	 */
+	protected $lastName;
+
+	/**
+	 * street
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $street;
+
+	/**
+	 * zip
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $zip;
+
+	/**
+	 * city
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $city;
+
+	/**
+	 * country
+	 *
+	 * @var string
+	 */
+	protected $country;
+
+	/**
+	 * email
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $email;
+
+	/**
+	 * offer
 	 *
 	 * @var Tx_DlVoucher_Domain_Model_Offer
 	 */
-	protected $defaultOffer;
-
-
-	/**
-	 * @var Tx_DlVoucher_Domain_Model_Customer
-	 */
-	protected $customer;
-
+	protected $offer;
 
 	/**
 	 * __construct
@@ -191,38 +239,156 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	}
 
 	/**
-	 * Returns the defaultOffer
+	 * Returns the firstName
 	 *
-	 * @return Tx_DlVoucher_Domain_Model_Offer $defaultOffer
+	 * @return string $firstName
 	 */
-	public function getDefaultOffer() {
-		return $this->defaultOffer;
+	public function getFirstName() {
+		return $this->firstName;
 	}
 
 	/**
-	 * Sets the defaultOffer
+	 * Sets the firstName
 	 *
-	 * @param Tx_DlVoucher_Domain_Model_Offer $defaultOffer
+	 * @param string $firstName
 	 * @return void
 	 */
-	public function setDefaultOffer(Tx_DlVoucher_Domain_Model_Offer $defaultOffer) {
-		$this->defaultOffer = $defaultOffer;
+	public function setFirstName($firstName) {
+		$this->firstName = $firstName;
 	}
 
 	/**
-	 * @param \Tx_DlVoucher_Domain_Model_Customer $customer
+	 * Returns the lastName
+	 *
+	 * @return integer $lastName
 	 */
-	public function setCustomer($customer) {
-		$this->customer = $customer;
+	public function getLastName() {
+		return $this->lastName;
 	}
 
 	/**
-	 * @return \Tx_DlVoucher_Domain_Model_Customer
+	 * Sets the lastName
+	 *
+	 * @param integer $lastName
+	 * @return void
 	 */
-	public function getCustomer() {
-		return $this->customer;
+	public function setLastName($lastName) {
+		$this->lastName = $lastName;
 	}
 
+	/**
+	 * Returns the street
+	 *
+	 * @return string $street
+	 */
+	public function getStreet() {
+		return $this->street;
+	}
+
+	/**
+	 * Sets the street
+	 *
+	 * @param string $street
+	 * @return void
+	 */
+	public function setStreet($street) {
+		$this->street = $street;
+	}
+
+	/**
+	 * Returns the zip
+	 *
+	 * @return string $zip
+	 */
+	public function getZip() {
+		return $this->zip;
+	}
+
+	/**
+	 * Sets the zip
+	 *
+	 * @param string $zip
+	 * @return void
+	 */
+	public function setZip($zip) {
+		$this->zip = $zip;
+	}
+
+	/**
+	 * Returns the city
+	 *
+	 * @return string $city
+	 */
+	public function getCity() {
+		return $this->city;
+	}
+
+	/**
+	 * Sets the city
+	 *
+	 * @param string $city
+	 * @return void
+	 */
+	public function setCity($city) {
+		$this->city = $city;
+	}
+
+	/**
+	 * Returns the country
+	 *
+	 * @return string $country
+	 */
+	public function getCountry() {
+		return $this->country;
+	}
+
+	/**
+	 * Sets the country
+	 *
+	 * @param string $country
+	 * @return void
+	 */
+	public function setCountry($country) {
+		$this->country = $country;
+	}
+
+	/**
+	 * Returns the email
+	 *
+	 * @return string $email
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * Sets the email
+	 *
+	 * @param string $email
+	 * @return void
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
+
+	/**
+	 * Returns the offer
+	 *
+	 * @return Tx_DlVoucher_Domain_Model_Offer $offer
+	 */
+	public function getOffer() {
+		return $this->offer;
+	}
+
+	/**
+	 * Sets the offer
+	 *
+	 * @param Tx_DlVoucher_Domain_Model_Offer $offer
+	 * @return void
+	 */
+	public function setOffer(Tx_DlVoucher_Domain_Model_Offer $offer) {
+		$this->offer = $offer;
+	}
 
 }
 ?>
