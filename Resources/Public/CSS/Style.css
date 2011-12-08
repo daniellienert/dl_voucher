@@ -18,12 +18,20 @@ input.f3-form-error {
 
 .formular {
     float:left;
-    width:400px;
+    width:300px;
+    margin-right:10px;
+}
+
+.dl-voucher-whitebox {
+    border: 1px solid #4D4D4D;
+    background-color: #FCFCFC;
+    color: black;
+    padding: 10px;
 }
 
 .imageSelector{
     float:left;
-    width:400px;
+    width:500px;
 }
 
 .voucherImage {
@@ -33,4 +41,8 @@ input.f3-form-error {
 
 .required {
     color:red;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: 10px 5px;
 }

@@ -21,6 +21,7 @@ CREATE TABLE tx_dlvoucher_domain_model_order (
 	print_amount tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	agb_accepted tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	offer int(11) unsigned DEFAULT '0',
+	code varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

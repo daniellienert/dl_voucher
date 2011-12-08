@@ -1,0 +1,179 @@
+﻿{namespace yag=Tx_Yag_ViewHelpers}
+
+<html>
+<head>
+    <style type="text/css">
+
+        body {
+            font-family:  Helvetica;
+        }
+
+        .voucher {
+            width:148mm;
+            height:210mm;
+            border: 1px solid black;
+            margin: 50px 0 0 90px
+        }
+
+        .voucher-image {
+            height:105mm;
+        }
+
+        .voucher-text {
+            height:303px;
+        }
+
+        .voucher-code {
+            height:15px;
+            font-size: 11px;
+            color: #444444;
+            text-align: right;
+            padding: 0 5px 3px 0;
+        }
+
+        .voucher-info {
+            padding-left:10px;
+            background-color: #eeecec;
+            border-top:1px solid #b6b5b5;
+        }
+
+        .voucher-info-table {
+            width:100%;
+        }
+
+        .voucher-info td {
+            font-size: 10pt;
+            color: #444444;
+            width:33%;
+        }
+
+
+        .header {
+            padding-top: 20px;
+            text-align:center;
+            font-size: 2em;
+        }
+
+        .voucher-value-header {
+            padding-top: 10px;
+            text-align:center;
+            font-size: 1.4em;
+        }
+
+        .voucher-value-description {
+            padding-top: 10px;
+            text-align:center;
+            font-size: 1.0em;
+        }
+
+        .voucher-text-left {
+            text-align: left;
+            padding-left:30px;
+        }
+
+        .voucher-text-message {
+            padding: 15px 20px 0 0;
+        }
+
+        .nameLabel {
+            font-size: 1.0em;
+        }
+
+        .fromName {
+            margin-left:10px;
+            margin-bottom:10px;
+            font-size: 1.4em;
+        }
+        .toName {
+            margin-left:10px;
+            font-size: 1.4em;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+    <div class="voucher">
+        <div class="voucher-image">
+            <yag:image item="{order.voucherYagImage}" resolutionName="voucher" />
+        </div>
+
+        <div class="voucher-text">
+            <div class="header">
+                <f:image src="EXT:dl_voucher/Resources/Public/Images/voucher.png" width="400px" alt="Gutschein" />
+            </div>
+
+
+            <f:if condition="{order.amount}">
+                <f:then>
+                    <f:if condition="{order.printAmount}">
+                        <div class="voucher-value-header">
+                            Betrag: {order.amount} &#0128;
+                        </div>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <div class="voucher-value-header">
+                        {order.offer.name}
+                    </div>
+                    <div class="voucher-value-description">
+                        {order.offer.description}
+                    </div>
+                </f:else>
+            </f:if>
+
+            <div class="voucher-text-left">
+                <f:if condition="{order.fromName}">
+                    <div class="nameLabel">
+                        Von:
+                    </div>
+                    <div class="fromName">
+                        {order.fromName}
+                    </div>
+                </f:if>
+
+                <f:if condition="{order.toName}">
+                    <div class="nameLabel">
+                        Für:
+                    </div>
+                    <div class="toName">
+                        {order.toName}
+                    </div>
+                </f:if>
+
+                <f:if condition="{order.info}">
+                    <div class="voucher-text-message">
+                        {order.info}
+                    </div>
+                </f:if>
+            </div>
+        </div>
+
+        <div class="voucher-code">
+            Code: {order.code}
+        </div>
+
+        <div class="voucher-info">
+           <table class="voucher-info-table">
+               <tr>
+                   <td>
+                       <div><f:image src="EXT:dl_voucher/Resources/Public/Images/logo.jpg" width="150" alt="Logo"/></div>
+                   </td>
+
+                   <td>
+                       <div>Foto Lienert</div>
+                        <div>Hauptstrasse 41</div>
+                        <div>77767 Appenweier-Urloffen</div>
+                   </td>
+
+                   <td>
+                        <div>Telefon: 07805 4280</div>
+                        <div>eMail: info@foto-lienert.de</div>
+                        <div>http://www.foto-lienert.de</div>
+                   </td>
+               </tr>
+           </table>
+        </div>
+
+    </div>
+</body>
+</html>

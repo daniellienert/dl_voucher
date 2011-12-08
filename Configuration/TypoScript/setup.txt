@@ -9,7 +9,17 @@ plugin.tx_dlvoucher {
 	}
 }
 
-page.includeCSS.dlVoucher = EXT:dl_voucher/Resources/Public/CSS/Style.css
+
+
+page.includeCSS {
+    jQueryUi = EXT:dl_voucher/Resources/Public/CSS/jquery-ui-1.8.16.custom.css
+    dlVoucher = EXT:dl_voucher/Resources/Public/CSS/Style.css
+}
+
+page.includeJS {
+    jQuery = EXT:dl_voucher/Resources/Public/Javascript/jquery-1.6.2.min.js
+    jQueryUi = EXT:dl_voucher/Resources/Public/Javascript/jquery-ui-1.8.16.custom.min.js
+}
 
 plugin.tx_yag.settings.themes.dlVoucher {
 
@@ -17,6 +27,11 @@ plugin.tx_yag.settings.themes.dlVoucher {
  		thumb {
     		height = 130c
     		width = 180c
+    	}
+
+    	voucher {
+    		width = 559c
+    		height = 396c
     	}
     }
 }

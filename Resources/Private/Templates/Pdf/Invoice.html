@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="fluid" xml:lang="en" lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+    <style type="text/css">
+        body, td, th {
+            font-family: arial,sans-serif;
+            font-size: 10pt;
+        }
+
+        .small {
+            font-size: 8pt
+        }
+
+        .bigFett {
+            font-size: 12pt;
+            font-weight: bold;
+        }
+
+        .spaceCell {
+            height: 10px;
+        }
+
+        .tblUnderline {
+            border-bottom: 1px solid gray;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="content">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="00">
+        <tr>
+            <td colspan="2" align="center">
+                <div class="toplogo" style="padding-bottom:30px">
+                    <f:image src="EXT:dl_voucher/Resources/Public/Images/logo-white.png" width="400" alt="Logo"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td width="60%">
+                <table width="100%" border="0" cellspacing="0" cellpadding="00">
+                    <tr>
+                        <td><span class="small">Foto Lienert &raquo; Hauptstraße 41 &raquo;
+                            77767 Appenweier-Urloffen</span></td>
+                    </tr>
+                    <tr>
+                        <td class="spaceCell"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="bigFett">{order.firstName} {order.lastName}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>{order.street}</td>
+                    </tr>
+                    <tr>
+                        <td>{order.zip} {order.city}</td>
+                    </tr>
+                </table>
+            </td>
+            <td align="right" width="40%">
+                <table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="2">
+                            <div class="bigFett">
+                                <div align="left">Rechnung</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="left">Rechnung Nr</div>
+                        </td>
+                        <td>
+                            <div align="left">{order.invoiceNo}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="left">Kunde</div>
+                        </td>
+                        <td>
+                            <div align="left">{order.firstName} {order.lastName}</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="00">
+                    <tr>
+                        <td align="left">
+                            <div style="font-weight:bold;">Artikel</div>
+                        </td>
+                        <td align="right">
+                            <div style="font-weight:bold;">Einzelpreis</div>
+                        </td>
+                        <td align="right">
+                            <div style="font-weight:bold; padding-right:7px;">Gesamt</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" valign="top" class="spaceCell">
+                            <div class="tblUnderline"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="55%">
+                            <f:if condition="{order.amount}">
+                                <f:then>
+                                    Gutschein in individueller Höhe.
+                                </f:then>
+                                <f:else>
+                                    <div class="voucher-value-header">
+                                        {order.offer.name}
+                                    </div>
+                                    <div class="voucher-value-description">
+                                        {order.offer.description}
+                                    </div>
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td valign="top" width="15%" align="right">
+                            {order.gross} &#0128;
+                        </td>
+                        <td valign="top" width="20%" align="right">
+                            {order.gross} &#0128;
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" class="spaceCell tblUnderline"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" class="spaceCell"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="right"><strong>Gesamtbetrag (netto)</strong></td>
+                        <td valign="top" align="right">
+                            <div style="padding-right:7px;">{order.net} &#0128</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" class="spaceCell"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="right"><strong>19% Mehrwertsteuer</strong></td>
+                        <td valign="top" align="right">
+                            <div style="padding-right:7px;">{order.tax} &#0128</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" class="tblUnderline spaceCell"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <div class="tblUnderline"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" class="spaceCell"></td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="2" align="right"><strong>Gesamtbetrag (brutto)</strong></td>
+                        <td valign="top" align="right">
+                            <div style="padding-right:7px;">{order.gross} &#0128</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <div class=" spaceCell tblUnderline"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">Diese Rechnung ist zahlbar innerhalb 7 Tagen nach Rechnungserhalt ohne Abz&uuml;ge.</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

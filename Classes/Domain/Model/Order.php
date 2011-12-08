@@ -146,6 +146,28 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	protected $offer;
 
+
+	/**
+	 * @var string
+	 */
+	protected $code;
+
+
+	/**
+	 * @var Tx_Extbase_Object_ObjectManagerInterface
+	 */
+	protected $objectManager;
+
+
+	/**
+	 * @param Tx_Extbase_Object_ObjectManagerInterface $objectManager
+	 * @return void
+	 */
+	public function injectObjectManager(Tx_Extbase_Object_ObjectManagerInterface $objectManager) {
+		$this->objectManager = $objectManager;
+	}
+
+
 	/**
 	 * __construct
 	 *
@@ -182,6 +204,16 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	public function getVoucherImage() {
 		return $this->voucherImage;
 	}
+
+
+	/**
+	 * @return Tx_Yag_Domain_Model_Item
+	 */
+	public function getVoucherYAGImage() {
+		return $this->objectManager->get('Tx_Yag_Domain_Repository_ItemRepository')->findByUid($this->voucherImage);
+	}
+
+	
 
 	/**
 	 * Sets the voucherImage
@@ -456,6 +488,61 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function setOffer(Tx_DlVoucher_Domain_Model_Offer $offer) {
 		$this->offer = $offer;
+	}
+
+	/**
+	 * @param string $code
+	 */
+	public function setCode($code) {
+		$this->code = $code;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCode() {
+		if(!$this->code) {
+			$this->code = strtoupper(substr(uniqid(''),-8,8));
+		}
+
+		return $this->code;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getInvoiceNo() {
+		return 'G' . date('Y') . '-' .  sprintf('%1$05d', $this->uid);
+	}
+
+
+	/**
+	 * @return int
+	 */
+	public function getGross() {
+		if((int)$this->amount) {
+			return $this->amount;
+		}  else {
+			return $this->offer->getPrice();
+		}
+	}
+
+
+	/**
+	 * @return float
+	 */
+	public function getNet() {
+		return number_format($this->getGross() * (1/1.19),2);
+	}
+
+
+	/**
+	 * @return float
+	 */
+	public function getTax() {
+		$tax = (float)$this->getGross() - $this->getGross() * (1/1.19);
+		return number_format($tax,2);
 	}
 
 }

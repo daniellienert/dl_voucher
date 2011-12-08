@@ -83,6 +83,17 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->offerRepository = $offerRepository;
 	}
 
+
+
+	/**
+	 * @return void
+	 */
+	public function initializeAction() {
+		$this->objectManager->get('Tx_Yag_Utility_Bootstrap')->setTheme('dlVoucher')->boot();
+	}
+
+
+
 	/**
 	 * action new
 	 *
@@ -92,7 +103,7 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	 */
 	public function newAction(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL) {
 
-		$this->objectManager->get('Tx_Yag_Utility_Bootstrap')->setTheme('dlVoucher')->boot();
+
 		$voucherAlbum = $this->albumRepository->findByUid(10); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
 		if($newOrder == NULL) {
@@ -117,7 +128,13 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	 */
 	public function createAction(Tx_DlVoucher_Domain_Model_Order $newOrder) {
 		$this->orderRepository->add($newOrder);
-		$this->flashMessageContainer->add('Your new Order was created.');
+
+		$this->objectManager->get('Tx_Extbase_Persistence_ManagerInterface')->persistAll();
+
+		$voucherCreator = $this->objectManager->get('Tx_DlVoucher_Domain_Pdf_VoucherCreator'); /** @var $voucherCreator Tx_DlVoucher_Domain_Pdf_VoucherCreator */
+		$voucherCreator->setOrder($newOrder);
+		$voucherCreator->build();
+
 	}
 
 }
