@@ -131,11 +131,28 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 
 		$this->objectManager->get('Tx_Extbase_Persistence_ManagerInterface')->persistAll();
 
-		$voucherCreator = $this->objectManager->get('Tx_DlVoucher_Domain_Pdf_VoucherCreator'); /** @var $voucherCreator Tx_DlVoucher_Domain_Pdf_VoucherCreator */
-		$voucherCreator->setOrder($newOrder);
-		$voucherCreator->build();
+		$documentCreator = $this->objectManager->get('Tx_DlVoucher_Domain_Pdf_DocumentCreator'); /** @var $documentCreator Tx_DlVoucher_Domain_Pdf_DocumentCreator */
+		$documentCreator->setOrder($newOrder);
+		$documentCreator->build();
 
 	}
 
+
+
+	/**
+	 * @param Tx_DlVoucher_Domain_Model_Order $order
+	 */
+	protected function sendMail(Tx_DlVoucher_Domain_Model_Order $order) {
+		$mail = t3lib_div::makeInstance('t3lib_mail_Message'); /** @var $mail t3lib_mail_Message */
+		$mail->setFrom('gutschein@foto-lienert.de');
+		$mail->setTo(array($order->getEmail() => $order->getFullName()));
+		$mail->setSubject('Ihr Gutschein von Foto Lienert');
+		$mail->setBody('Test');
+
+		$mail->attach(Swift_Attachment::fromPath($order->getInvoicePDFPathAndFileName())->setFilename('Rechnung.pdf'));
+		$mail->attach(Swift_Attachment::fromPath($order->getVoucherPDFPathAndFileName())->setFilename('Gutschein.pdf'));
+
+		$mail->send();
+	}
 }
 ?>

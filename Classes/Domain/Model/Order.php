@@ -545,5 +545,46 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		return number_format($tax,2);
 	}
 
+
+	/**
+	 * @return string
+	 */
+	public function getFullname() {
+		return $this->firstName . ' ' . $this->lastName;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getDocumentDirectory() {
+		Tx_PtExtbase_Assertions_Assert::isPositiveInteger($this->uid);
+
+		$path = PATH_site . '/fileadmin/dl_voucher_documents/' . $this->uid .'/';
+		if(!is_dir($path)) {
+			t3lib_div::mkdir_deep($path);
+		}
+
+		return $path;
+	}
+
+
+
+	/**
+	 * @return string
+	 */
+	public function getInvoicePDFPathAndFileName() {
+		return $this->getDocumentDirectory() . 'Invoice.pdf';
+	}
+
+
+
+	/**
+	 * @return string
+	 */
+	public function getVoucherPDFPathAndFileName() {
+		return $this->getDocumentDirectory() . 'Voucher.pdf';
+	}
+
 }
 ?>
