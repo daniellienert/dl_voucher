@@ -1,0 +1,74 @@
+
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <h1>Gutschein bestellen</h1>
+
+    <f:flashMessages/>
+
+    <f:render partial="FormErrors"/>
+
+    <f:form method="post" action="billing" name="newOrder" object="{newOrder}">
+		<div id="invoiceData">
+			<div  class="dl-voucher-whitebox">
+				<div style="float:left">
+					<label for="firstName">
+						<f:translate key="tx_dlvoucher_domain_model_order.first_name"/>
+						<span class="required">*</span>
+					</label><br/>
+					<f:form.textfield property="firstName"/>
+				</div>
+
+				<div>
+					<label for="lastName">
+						<f:translate key="tx_dlvoucher_domain_model_order.last_name"/>
+						<span class="required">*</span>
+					</label><br/>
+					<f:form.textfield property="lastName"/>
+				</div>
+
+				<label for="street">
+					<f:translate key="tx_dlvoucher_domain_model_order.street"/>
+					<span class="required">*</span>
+				</label><br/>
+				<f:form.textfield property="street" size="43"/>
+				<br/>
+
+				<div style="float:left;">
+					<label for="zip">
+						<f:translate key="tx_dlvoucher_domain_model_order.zip"/>
+						<span class="required">*</span>
+					</label><br/>
+					<f:form.textfield property="zip"/>
+				</div>
+
+				<div>
+					<label for="city">
+						<f:translate key="tx_dlvoucher_domain_model_order.city"/>
+						<span class="required">*</span>
+					</label><br/>
+					<f:form.textfield property="city"/>
+					<br/>
+				</div>
+
+				<label for="email">
+					<f:translate key="tx_dlvoucher_domain_model_order.email"/>
+					<span class="required">*</span>
+				</label><br/>
+				<f:form.textfield property="email"/>
+				<br/>
+
+				<label for="agbAccepted">
+					<f:translate key="tx_dlvoucher_domain_model_order.agb_accepted"/>
+					<span class="required">*</span>
+				</label><br/>
+				<f:form.checkbox property="agbAccepted" value="1"/>
+				<br/>
+			</div>
+			<div>
+				<f:form.submit value="Weiter"/>
+			</div>
+		</div>
+	</f:form>
+</f:section>

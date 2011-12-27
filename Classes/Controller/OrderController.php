@@ -104,7 +104,7 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	public function newAction(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL) {
 
 
-		$voucherAlbum = $this->albumRepository->findByUid(10); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
+		$voucherAlbum = $this->albumRepository->findByUid(12); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
 		if($newOrder == NULL) {
 			$newOrder = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
@@ -117,6 +117,16 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$this->view->assign('voucherAlbum', $voucherAlbum);
 
 		$this->view->assign('newOrder', $newOrder);
+	}
+
+
+	public function billingAction() {
+
+	}
+
+
+	public function OverviewAction() {
+
 	}
 
 	

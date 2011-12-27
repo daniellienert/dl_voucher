@@ -18,7 +18,7 @@ input.f3-form-error {
 
 .formular {
     float:left;
-    width:300px;
+    width:390px;
     margin-right:10px;
 }
 
@@ -31,11 +31,12 @@ input.f3-form-error {
 
 .imageSelector{
     float:left;
-    width:500px;
+    width:525px;
 }
 
 .voucherImage {
-    width:50%;
+    width:175px;
+    height: 150px;
     float:left;
 }
 
@@ -45,4 +46,13 @@ input.f3-form-error {
 
 .ui-tabs .ui-tabs-panel {
     padding: 10px 5px;
+}
+
+#stepTrace li {
+    display: inline;
+    padding-right: 30px;
+}
+
+#stepTrace li.selectedStep {
+    font-weight: bold;
 }
