@@ -32,7 +32,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_DlVoucher_Domain_Model_Voucher extends Tx_Extbase_DomainObject_AbstractEntity implements Tx_PtExtbase_State_Session_SessionPersistableInterface {
 
 	/**
 	 * info
@@ -69,54 +69,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	protected $amount;
 
-	/**
-	 * firstName
-	 *
-	 * @var string
-	 */
-	protected $firstName;
-
-	/**
-	 * lastName
-	 *
-	 * @var integer
-	 */
-	protected $lastName;
-
-	/**
-	 * street
-	 *
-	 * @var string
-	 */
-	protected $street;
-
-	/**
-	 * zip
-	 *
-	 * @var string
-	 */
-	protected $zip;
-
-	/**
-	 * city
-	 *
-	 * @var string
-	 */
-	protected $city;
-
-	/**
-	 * country
-	 *
-	 * @var string
-	 */
-	protected $country;
-
-	/**
-	 * email
-	 *
-	 * @var string
-	 */
-	protected $email;
 
 	/**
 	 * printAmount
@@ -125,12 +77,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	protected $printAmount = false;
 
-	/**
-	 * agbAccepted
-	 *
-	 * @var boolean
-	 */
-	protected $agbAccepted = false;
 
 	/**
 	 * offer
@@ -139,11 +85,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	protected $offer;
 
-
-	/**
-	 * @var string
-	 */
-	protected $code;
 
 
 	/**
@@ -275,138 +216,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		$this->amount = $amount;
 	}
 
-	/**
-	 * Returns the firstName
-	 *
-	 * @return string $firstName
-	 */
-	public function getFirstName() {
-		return $this->firstName;
-	}
-
-	/**
-	 * Sets the firstName
-	 *
-	 * @param string $firstName
-	 * @return void
-	 */
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-	}
-
-	/**
-	 * Returns the lastName
-	 *
-	 * @return integer $lastName
-	 */
-	public function getLastName() {
-		return $this->lastName;
-	}
-
-	/**
-	 * Sets the lastName
-	 *
-	 * @param integer $lastName
-	 * @return void
-	 */
-	public function setLastName($lastName) {
-		$this->lastName = $lastName;
-	}
-
-	/**
-	 * Returns the street
-	 *
-	 * @return string $street
-	 */
-	public function getStreet() {
-		return $this->street;
-	}
-
-	/**
-	 * Sets the street
-	 *
-	 * @param string $street
-	 * @return void
-	 */
-	public function setStreet($street) {
-		$this->street = $street;
-	}
-
-	/**
-	 * Returns the zip
-	 *
-	 * @return string $zip
-	 */
-	public function getZip() {
-		return $this->zip;
-	}
-
-	/**
-	 * Sets the zip
-	 *
-	 * @param string $zip
-	 * @return void
-	 */
-	public function setZip($zip) {
-		$this->zip = $zip;
-	}
-
-	/**
-	 * Returns the city
-	 *
-	 * @return string $city
-	 */
-	public function getCity() {
-		return $this->city;
-	}
-
-	/**
-	 * Sets the city
-	 *
-	 * @param string $city
-	 * @return void
-	 */
-	public function setCity($city) {
-		$this->city = $city;
-	}
-
-	/**
-	 * Returns the country
-	 *
-	 * @return string $country
-	 */
-	public function getCountry() {
-		return $this->country;
-	}
-
-	/**
-	 * Sets the country
-	 *
-	 * @param string $country
-	 * @return void
-	 */
-	public function setCountry($country) {
-		$this->country = $country;
-	}
-
-	/**
-	 * Returns the email
-	 *
-	 * @return string $email
-	 */
-	public function getEmail() {
-		return $this->email;
-	}
-
-	/**
-	 * Sets the email
-	 *
-	 * @param string $email
-	 * @return void
-	 */
-	public function setEmail($email) {
-		$this->email = $email;
-	}
 
 	/**
 	 * Returns the printAmount
@@ -436,33 +245,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		return $this->getPrintAmount();
 	}
 
-	/**
-	 * Returns the agbAccepted
-	 *
-	 * @return boolean $agbAccepted
-	 */
-	public function getAgbAccepted() {
-		return (bool) $this->agbAccepted;
-	}
-
-	/**
-	 * Sets the agbAccepted
-	 *
-	 * @param boolean $agbAccepted
-	 * @return void
-	 */
-	public function setAgbAccepted($agbAccepted) {
-		$this->agbAccepted = $agbAccepted;
-	}
-
-	/**
-	 * Returns the boolean state of agbAccepted
-	 *
-	 * @return boolean
-	 */
-	public function isAgbAccepted() {
-		return $this->getAgbAccepted();
-	}
 
 	/**
 	 * Returns the offer
@@ -483,101 +265,68 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		$this->offer = $offer;
 	}
 
-	/**
-	 * @param string $code
-	 */
-	public function setCode($code) {
-		$this->code = $code;
-	}
 
 	/**
-	 * @return string
+	 * Generates an unique namespace for an object to be used
+	 * for addressing object specific session data and gp variables.
+	 *
+	 * Expected notation: ns1.ns2.ns3.(...)
+	 *
+	 * @return String Unique namespace for object
 	 */
-	public function getCode() {
-		if(!$this->code) {
-			$this->code = strtoupper(substr(uniqid(''),-8,8));
+	public function getObjectNamespace() {
+		return 'voucher';
+	}
+
+
+	/**
+	 * Called by any mechanism to persist an object's state to session
+	 *
+	 * @return array Object's state to be persisted to session
+	 */
+	public function persistToSession() {
+		return array(
+			'info' => $this->info,
+			'fromName' => $this->fromName,
+			'toName' => $this->toName,
+			'printAmount' => $this->printAmount,
+			'amount' => $this->amount,
+			'offer' => $this->offer->getUid(),
+		);
+	}
+
+
+
+	/**
+	 * Called by any mechanism to inject an object's state from session
+	 *
+	 * @param array $sessionData Object's state previously persisted to session
+	 */
+	public function injectSessionData(array $sessionData) {
+		$this->setFromArrayIfExists($sessionData, 'info');
+		$this->setFromArrayIfExists($sessionData, 'fromName');
+		$this->setFromArrayIfExists($sessionData, 'toName');
+		$this->setFromArrayIfExists($sessionData, 'printAmount');
+		$this->setFromArrayIfExists($sessionData, 'amount');
+		$this->setFromArrayIfExists($sessionData, 'offer');
+	}
+
+
+
+	/**
+	 * Set a value if the key in the given array and a setter with the same name exists
+	 *
+	 * @param $array
+	 * @param $key
+	 */
+	protected function setFromArrayIfExists($array, $key) {
+		$setter = 'set' . ucfirst($key);
+		if(array_key_exists($key, $array) && method_exists($this, $setter)) {
+			$this->$setter($array[$key]);
 		}
-
-		return $this->code;
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getInvoiceNo() {
-		return 'G' . date('Y') . '-' .  sprintf('%1$05d', $this->uid);
-	}
-
-
-	/**
-	 * @return int
-	 */
-	public function getGross() {
-		if((int)$this->amount) {
-			return $this->amount;
-		}  else {
-			return $this->offer->getPrice();
-		}
-	}
-
-
-	/**
-	 * @return float
-	 */
-	public function getNet() {
-		return number_format($this->getGross() * (1/1.19),2);
-	}
-
-
-	/**
-	 * @return float
-	 */
-	public function getTax() {
-		$tax = (float)$this->getGross() - $this->getGross() * (1/1.19);
-		return number_format($tax,2);
-	}
-
-
-	/**
-	 * @return string
-	 */
-	public function getFullname() {
-		return $this->firstName . ' ' . $this->lastName;
-	}
-
-
-	/**
-	 * @return string
-	 */
-	public function getDocumentDirectory() {
-		Tx_PtExtbase_Assertions_Assert::isPositiveInteger($this->uid);
-
-		$path = PATH_site . '/fileadmin/dl_voucher_documents/' . $this->uid .'/';
-		if(!is_dir($path)) {
-			t3lib_div::mkdir_deep($path);
-		}
-
-		return $path;
-	}
-
-
-
-	/**
-	 * @return string
-	 */
-	public function getInvoicePDFPathAndFileName() {
-		return $this->getDocumentDirectory() . 'Invoice.pdf';
-	}
-
-
-
-	/**
-	 * @return string
-	 */
-	public function getVoucherPDFPathAndFileName() {
-		return $this->getDocumentDirectory() . 'Voucher.pdf';
-	}
 
 }
 ?>

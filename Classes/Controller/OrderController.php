@@ -97,31 +97,43 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	/**
 	 * action new
 	 *
-	 * @param $newOrder
-	 * @dontvalidate $newOrder
+	 * @param Tx_DlVoucher_Domain_Model_Voucher $voucher
+	 * @dontvalidate $voucher
 	 * @return void
 	 */
-	public function newAction(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL) {
-
+	public function voucherAction(Tx_DlVoucher_Domain_Model_Voucher $voucher = NULL) {
 
 		$voucherAlbum = $this->albumRepository->findByUid(12); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
-		if($newOrder == NULL) {
-			$newOrder = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
-			$newOrder->setVoucherImage($voucherAlbum->getItems()->current()->getUid());
+		if($voucher == NULL) {
+			$voucher = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
+			$voucher->setVoucherImage($voucherAlbum->getItems()->current()->getUid());
 		}
-
-
 
 		$this->view->assign('offers', $this->offerRepository->findAll());
 		$this->view->assign('voucherAlbum', $voucherAlbum);
 
-		$this->view->assign('newOrder', $newOrder);
+		$this->view->assign('voucher', $voucher);
 	}
 
 
-	public function billingAction() {
 
+	/**
+	 * @param null|Tx_DlVoucher_Domain_Model_Voucher $voucher
+	 */
+	public function saveVoucherAction(Tx_DlVoucher_Domain_Model_Voucher $voucher = NULL) {
+		Tx_PtExtbase_State_Session_SessionPersistenceManagerFactory::getInstance()->persistToSession($voucher);
+	}
+
+
+
+	/**
+	 * @param Tx_DlVoucher_Domain_Model_Order $newOrder
+	 * @dontValidate
+	 */
+	public function billingAction(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL) {
+		print_r($newOrder);
+		die();
 	}
 
 

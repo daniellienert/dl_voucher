@@ -3,13 +3,13 @@
 
 <f:section name="main">
 
-    <h1>Gutschein bestellen</h1>
+	<f:render partial="Order/StepTrace" arguments="{step2:1}"/>
 
     <f:flashMessages/>
 
     <f:render partial="FormErrors"/>
 
-    <f:form method="post" action="billing" name="newOrder" object="{newOrder}">
+    <f:form method="post" action="overview" name="newOrder" object="{newOrder}">
 		<div id="invoiceData">
 			<div  class="dl-voucher-whitebox">
 				<div style="float:left">
@@ -66,7 +66,7 @@
 				<f:form.checkbox property="agbAccepted" value="1"/>
 				<br/>
 			</div>
-			<div>
+			<div class="stepForward">
 				<f:form.submit value="Weiter"/>
 			</div>
 		</div>

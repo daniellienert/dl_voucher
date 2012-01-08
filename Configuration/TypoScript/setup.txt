@@ -25,7 +25,7 @@ plugin.tx_yag.settings.themes.dlVoucher {
 
     resolutionConfigs {
  		thumb {
-    		height = 125c
+    		height = 115c
     		width = 170c
     	}
 

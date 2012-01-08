@@ -7,11 +7,11 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Voucher',
 	array(
-		'Order' => 'new, billing, overview, create',
+		'Order' => 'voucher, saveVoucher, billing, overview, create',
 	),
 	// non-cacheable actions
 	array(
-		'Order' => 'new, billing, overview, create',
+		'Order' => 'voucher, saveVoucher, billing, overview, create',
 	)
 );
 

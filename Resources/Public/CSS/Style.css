@@ -27,6 +27,8 @@ input.f3-form-error {
     background-color: #FCFCFC;
     color: black;
     padding: 10px;
+    height: 385px;
+    width: 370px;
 }
 
 .imageSelector{
@@ -36,7 +38,7 @@ input.f3-form-error {
 
 .voucherImage {
     width:175px;
-    height: 150px;
+    height: 137px;
     float:left;
 }
 
@@ -55,4 +57,14 @@ input.f3-form-error {
 
 #stepTrace li.selectedStep {
     font-weight: bold;
+}
+
+.stepForward {
+    float:right;
+    padding: 0 20px 15px 0;
+}
+
+.stepBackward {
+    float:left;
+    padding: 0 20px 15px 0;
 }
