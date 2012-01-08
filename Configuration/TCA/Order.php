@@ -218,6 +218,17 @@ $TCA['tx_dlvoucher_domain_model_order'] = array(
 				'default' => 0
 			),
 		),
+
+		'receive_voucher' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.receive_voucher',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim,required'
+			),
+		),
+		
 		'offer' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.offer',

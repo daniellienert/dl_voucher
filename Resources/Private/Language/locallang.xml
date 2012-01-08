@@ -22,11 +22,16 @@
 			<label index="tx_dlvoucher_domain_model_order.print_amount">Betrag auf Gutschein anzeigen.</label>
 			<label index="tx_dlvoucher_domain_model_order.agb_accepted">agbAccepted</label>
 			<label index="tx_dlvoucher_domain_model_order.offer">Angebot</label>
-			<label index="tx_dlvoucher_domain_model_offer">Angebot</label>
+            <label index="tx_dlvoucher_domain_model_order.send_Voucher">Bitte senden Sie mir Gutschein und Rechnung per Post.</label>
+            <label index="tx_dlvoucher_domain_model_order.print_Voucher">Ich möchte Gutschein und Rechnung sofort zum Ausdrucken per Mail erhalten.</label>
+
+            <label index="tx_dlvoucher_domain_model_offer">Angebot</label>
 			<label index="tx_dlvoucher_domain_model_offer.name">Angebot</label>
 			<label index="tx_dlvoucher_domain_model_offer.description">Beschreibung</label>
 			<label index="tx_dlvoucher_domain_model_offer.type">Typ</label>
 			<label index="tx_dlvoucher_domain_model_offer.price">Preis</label>
+
+
 		</languageKey>
 	</data>
 </T3locallang>

@@ -34,5 +34,58 @@
  */
 class Tx_DlVoucher_Domain_Repository_OrderRepository extends Tx_Extbase_Persistence_Repository {
 
+
+	/**
+	 * Session Handling methods
+	 */
+
+	/**
+	 * @var Tx_PtExtbase_State_Session_Storage_SessionAdapter
+	 */
+	protected $sessionHandler = NULL;
+
+
+	public function __construct() {
+		parent::__construct();
+		// get an instance of the session handler
+		$this->sessionHandler = Tx_PtExtbase_State_Session_Storage_SessionAdapter::getInstance();
+	}
+
+
+
+	/**
+	 * Returns the object stored in the user´s PHP session
+	 * @return Tx_DlVoucher_Domain_Model_Order the stored Object
+	 */
+	public function restoreFromSession() {
+		$order = $this->sessionHandler->read('Tx_DlVoucher_Domain_Model_Order');
+		if(is_a($order, 'Tx_DlVoucher_Domain_Model_Order')) {
+			return $order;
+		} else {
+			return $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
+		}
+	}
+
+
+
+	/**
+	 * @param Tx_DlVoucher_Domain_Model_Order $order
+	 * @return Tx_DlVoucher_Domain_Repository_OrderRepository
+	 */
+	public function persistToSession(Tx_DlVoucher_Domain_Model_Order $order) {
+		$this->sessionHandler->store('Tx_DlVoucher_Domain_Model_Order', $order);
+		return $this;
+	}
+
+
+
+	/**
+	 * Cleans up the session: removes the stored object from the PHP session
+	 * @return	Tx_MyExt_Domain_Repository_ObjectRepository this
+	 */
+	public function cleanUpSession() {
+		$this->sessionHandler->delete('Tx_DlVoucher_Domain_Model_Order');
+		return $this;
+	}
 }
 ?>

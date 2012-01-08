@@ -97,48 +97,71 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	/**
 	 * action new
 	 *
-	 * @param Tx_DlVoucher_Domain_Model_Voucher $voucher
-	 * @dontvalidate $voucher
+	 * @param Tx_DlVoucher_Domain_Model_Order $order
+	 * @dontvalidate $order
 	 * @return void
 	 */
-	public function voucherAction(Tx_DlVoucher_Domain_Model_Voucher $voucher = NULL) {
+	public function voucherAction(Tx_DlVoucher_Domain_Model_Order $order = NULL) {
 
 		$voucherAlbum = $this->albumRepository->findByUid(12); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
-		if($voucher == NULL) {
-			$voucher = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
-			$voucher->setVoucherImage($voucherAlbum->getItems()->current()->getUid());
+		if($order == NULL) {
+
+			$order = $this->orderRepository->restoreFromSession();
+
+			if(!$order) {
+				$order = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
+				$order->setVoucherImage($voucherAlbum->getItems()->current()->getUid());
+			}
 		}
 
 		$this->view->assign('offers', $this->offerRepository->findAll());
 		$this->view->assign('voucherAlbum', $voucherAlbum);
 
-		$this->view->assign('voucher', $voucher);
+		$this->view->assign('order', $order);
 	}
 
 
 
 	/**
-	 * @param null|Tx_DlVoucher_Domain_Model_Voucher $voucher
+	 * @param null|Tx_DlVoucher_Domain_Model_Order $order
 	 */
-	public function saveVoucherAction(Tx_DlVoucher_Domain_Model_Voucher $voucher = NULL) {
-		Tx_PtExtbase_State_Session_SessionPersistenceManagerFactory::getInstance()->persistToSession($voucher);
+	public function saveVoucherAction(Tx_DlVoucher_Domain_Model_Order $order = NULL) {
+
+		// TODO Validierung
+
+		$sessionOrder = $this->orderRepository->restoreFromSession();
+		$sessionOrder->setVoucherValuesFromOrder($order);
+		$this->orderRepository->persistToSession($sessionOrder);
+
+		$this->forward('billing');
 	}
 
 
 
 	/**
-	 * @param Tx_DlVoucher_Domain_Model_Order $newOrder
-	 * @dontValidate
+	 * show the billing form
 	 */
-	public function billingAction(Tx_DlVoucher_Domain_Model_Order $newOrder = NULL) {
-		print_r($newOrder);
-		die();
+	public function billingAction() {
+
+		$sessionOrder = $this->orderRepository->restoreFromSession();
+		$this->view->assign('order', $sessionOrder);
 	}
 
 
-	public function OverviewAction() {
+	public function  saveBillingAction(Tx_DlVoucher_Domain_Model_Order $order) {
 
+		// TODO Validation
+		$sessionOrder = $this->orderRepository->restoreFromSession();
+		$sessionOrder->setBillingValuesFromOrder($order);
+		$this->orderRepository->persistToSession($sessionOrder);
+
+		$this->forward('overview');
+	}
+
+
+
+	public function overviewAction() {
 	}
 
 	

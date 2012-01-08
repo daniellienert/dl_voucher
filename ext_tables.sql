@@ -20,6 +20,7 @@ CREATE TABLE tx_dlvoucher_domain_model_order (
 	email varchar(255) DEFAULT '' NOT NULL,
 	print_amount tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	agb_accepted tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	receive_voucher varchar(255) DEFAULT '' NOT NULL,
 	offer int(11) unsigned DEFAULT '0',
 	code varchar(255) DEFAULT '' NOT NULL,
 

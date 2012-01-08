@@ -69,6 +69,13 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	protected $amount;
 
+
+	/**
+	 * @var string
+	 */
+	protected $amountType;
+
+
 	/**
 	 * firstName
 	 *
@@ -131,6 +138,14 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @var boolean
 	 */
 	protected $agbAccepted = false;
+
+
+	/**
+	 * @var string
+	 */
+	protected $receiveVoucher;
+
+
 
 	/**
 	 * offer
@@ -490,6 +505,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		$this->code = $code;
 	}
 
+
 	/**
 	 * @return string
 	 */
@@ -500,6 +516,39 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 
 		return $this->code;
 	}
+
+
+
+	/**
+	 * @param Tx_DlVoucher_Domain_Model_Order $order
+	 */
+	public function setVoucherValuesFromOrder(Tx_DlVoucher_Domain_Model_Order $order) {
+		$this->setOffer($order->getOffer());
+		$this->setAmount($order->getAmount());
+		$this->setFromName($order->getFromName());
+		$this->setToName($order->getToName());
+		$this->setPrintAmount($order->getPrintAmount());
+		$this->setVoucherImage($order->getVoucherImage());
+	}
+
+
+
+	/**
+	 * @param Tx_DlVoucher_Domain_Model_Order $order
+	 */
+	public function setBillingValuesFromOrder(Tx_DlVoucher_Domain_Model_Order $order) {
+
+		$this->setFirstName($order->getFirstName());
+		$this->setLastName($order->getLastName());
+		$this->setStreet($order->getStreet());
+		$this->setZip($order->getZip());
+		$this->setCity($order->getCity());
+		$this->setEmail($order->getEmail());
+
+		$this->setAgbAccepted($order->getAgbAccepted());
+
+	}
+
 
 
 	/**
@@ -553,9 +602,10 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	public function getDocumentDirectory() {
 		Tx_PtExtbase_Assertions_Assert::isPositiveInteger($this->uid);
 
-		$path = PATH_site . '/fileadmin/dl_voucher_documents/' . $this->uid .'/';
+		$basePath = PATH_site . '/fileadmin/';
+		$pathToCreate = 'dl_voucher_documents/' . $this->uid .'/';
 		if(!is_dir($path)) {
-			t3lib_div::mkdir_deep($path);
+			t3lib_div::mkdir_deep($basePath, $pathToCreate);
 		}
 
 		return $path;
@@ -577,6 +627,55 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function getVoucherPDFPathAndFileName() {
 		return $this->getDocumentDirectory() . 'Voucher.pdf';
+	}
+
+
+	/**
+	 * @return bool
+	 */
+	public function getOfferIsSelected() {
+		return $this->amountType == 'offer';
+	}
+
+
+
+	/**
+	 * @return bool
+	 */
+	public function getAmountIsSelected() {
+		return $this->amountType = 'amount';
+	}
+
+
+
+	/**
+	 * @param string $amountType
+	 */
+	public function setAmountType($amountType) {
+		$this->amountType = $amountType;
+	}
+
+
+
+	/**
+	 * @return string
+	 */
+	public function getAmountType() {
+		return $this->amountType;
+	}
+
+	/**
+	 * @param string $receiveVoucher
+	 */
+	public function setReceiveVoucher($receiveVoucher) {
+		$this->receiveVoucher = $receiveVoucher;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getReceiveVoucher() {
+		return $this->receiveVoucher;
 	}
 
 }

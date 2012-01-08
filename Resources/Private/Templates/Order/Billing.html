@@ -1,4 +1,4 @@
-
+﻿
 <f:layout name="Default"/>
 
 <f:section name="main">
@@ -9,7 +9,7 @@
 
     <f:render partial="FormErrors"/>
 
-    <f:form method="post" action="overview" name="newOrder" object="{newOrder}">
+    <f:form method="post" action="saveBilling" name="order" object="{order}">
 		<div id="invoiceData">
 			<div  class="dl-voucher-whitebox">
 				<div style="float:left">
@@ -66,9 +66,17 @@
 				<f:form.checkbox property="agbAccepted" value="1"/>
 				<br/>
 			</div>
+
 			<div class="stepForward">
 				<f:form.submit value="Weiter"/>
 			</div>
 		</div>
 	</f:form>
+
+	<f:form method="post" action="voucher">
+		<div class="stepBack">
+			<f:form.submit value="Zurück"/>
+		</div>
+	</f:form>
+
 </f:section>
