@@ -118,27 +118,27 @@
             </div>
 
 
-            <f:if condition="{order.amount}">
+            <f:if condition="{order.offerIsSelected}">
                 <f:then>
-                    <f:if condition="{order.printAmount}">
-                        <div class="voucher-value-header">
-                            Betrag: {order.amount} &#0128;
-                        </div>
-                    </f:if>
+					<div class="voucher-value-header">
+						{order.offer.name}
+					</div>
+					<div class="voucher-value-description">
+						{order.offer.description}
+					</div>
                 </f:then>
                 <f:else>
-                    <div class="voucher-value-header">
-                        {order.offer.name}
-                    </div>
-                    <div class="voucher-value-description">
-                        {order.offer.description}
-                    </div>
+					<f:if condition="{order.printAmount}">
+						<div class="voucher-value-header">
+							Betrag: {order.amount} &#0128;
+						</div>
+					</f:if>
                 </f:else>
             </f:if>
 
 			<f:if condition="{preview}">
 				<div class="preview-container">
-					<div class="preview">Muster</div>
+					<div class="preview">Vorschau</div>
 				</div>
 			</f:if>
 
@@ -172,7 +172,7 @@
         <f:if condition="{preview}">
 			<f:then>
 				<div class="voucher-code">
-					Muster
+					Vorschau
 				</div>
 			</f:then>
 			<f:else>

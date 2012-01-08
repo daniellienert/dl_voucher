@@ -552,8 +552,11 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @param Tx_DlVoucher_Domain_Model_Order $order
 	 */
 	public function setVoucherValuesFromOrder(Tx_DlVoucher_Domain_Model_Order $order) {
+
 		$this->setOffer($order->getOffer());
 		$this->setAmount($order->getAmount());
+		$this->setAmountType($order->getAmountType());
+		$this->setInfo($order->getInfo());
 		$this->setFromName($order->getFromName());
 		$this->setToName($order->getToName());
 		$this->setPrintAmount($order->getPrintAmount());
