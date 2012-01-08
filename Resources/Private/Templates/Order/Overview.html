@@ -6,10 +6,47 @@
 
     <f:flashMessages/>
 
+	<div class="formular dl-voucher-whitebox">
+		<h1>Gutschein</h1>
+
+		<dl>
+			<f:if condition="{order.offerIsSelected}">
+				<f:then><dt>für</dt> <dd>{order.offer.name}</dd></f:then>
+				<f:else><dt>in Höhe von</dt> {order.amount} €</dd></f:else>
+			</f:if>
+
+			<dt>von:</dt> <dd>{order.fromName}</dd>
+			<dt>für:</dt> <dd>{order.toName}</dd>
+			<dt>Text:</dt><dd>{order.info}</dd>
+		</dl>
+
+		<h1>Rechnungsadresse</h1>
+		<dl>
+			<dt>Name:</dt><dd>{order.fullname}</dd>
+			<dt>Straße:</dt><dd>{order.street}</dd>
+			<dt>Ort:</dt><dd>{order.zip} {order.city}</dd>
+		</dl>
+
+	</div>
+
+
+	<div class="voucherPreview">
+		<iframe src="{order.voucherPreviewWebPath}" width="100%"style="height:100%" align="right">
+		[Ihr browser unterstützt die Anzeige von iFrames nicht - bitte laden Sie sich die Vorschau des Gutscheins <a href="../latin9.pdf">mit diesem Link</a>
+		herunter.</iframe>
+	</div>
+
+	<div style="clear:both"></div>
 
 	<f:form method="post" action="billing">
 		<div class="stepBack">
 			<f:form.submit value="Zurück"/>
+		</div>
+	</f:form>
+	
+	<f:form method="post" action="create">
+		<div class="stepForward" style="margin:0; margin-top:-25px">
+			<f:form.submit value="Gutschein bestellen"/>
 		</div>
 	</f:form>
 

@@ -31,14 +31,19 @@ input.f3-form-error {
     width: 370px;
 }
 
-.imageSelector{
+.imageSelector {
     float:left;
     width:525px;
 }
 
+.voucherPreview {
+    float:left;
+    width:525px;
+    height:395px;
+}
+
 .voucherImage {
     width:175px;
-    height: 137px;
     float:left;
 }
 

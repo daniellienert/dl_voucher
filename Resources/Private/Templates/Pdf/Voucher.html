@@ -47,7 +47,6 @@
             width:33%;
         }
 
-
         .header {
             padding-top: 20px;
             text-align:center;
@@ -84,10 +83,26 @@
             margin-bottom:10px;
             font-size: 1.4em;
         }
+
         .toName {
             margin-left:10px;
             font-size: 1.4em;
         }
+
+		.preview {
+			-webkit-transform: rotate(0.2rad);
+			-moz-transform: rotate(0.1rad);
+			-ms-transform: rotate(0.1rad);
+			font-size: 50pt;
+			color: gray;
+		}
+
+		.preview-container {
+			position: absolute;
+			top:550px;
+			left:300px;
+		}
+
     </style>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </head>
@@ -121,6 +136,12 @@
                 </f:else>
             </f:if>
 
+			<f:if condition="{preview}">
+				<div class="preview-container">
+					<div class="preview">Muster</div>
+				</div>
+			</f:if>
+
             <div class="voucher-text-left">
                 <f:if condition="{order.fromName}">
                     <div class="nameLabel">
@@ -148,9 +169,19 @@
             </div>
         </div>
 
-        <div class="voucher-code">
-            Code: {order.code}
-        </div>
+        <f:if condition="{preview}">
+			<f:then>
+				<div class="voucher-code">
+					Muster
+				</div>
+			</f:then>
+			<f:else>
+				<div class="voucher-code">
+					Code: {order.code}
+				</div>
+			</f:else>
+        </f:if>
+
 
         <div class="voucher-info">
            <table class="voucher-info-table">

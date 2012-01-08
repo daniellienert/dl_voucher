@@ -160,9 +160,21 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	}
 
 
-
+	/**
+	 * Overview
+	 */
 	public function overviewAction() {
+		$order = $this->orderRepository->restoreFromSession();
+		$voucherYAGImage = $this->objectManager->get('Tx_Yag_Domain_Repository_ItemRepository')->findByUid($order->getVoucherImage());
+		$order->setVoucherYAGImage($voucherYAGImage);
+
+		$documentCreator = $this->objectManager->get('Tx_DlVoucher_Domain_Pdf_DocumentCreator'); /** @var $documentCreator Tx_DlVoucher_Domain_Pdf_DocumentCreator */
+		$documentCreator->setOrder($order);
+		$documentCreator->buildVoucherPreview();
+
+		$this->view->assign('order', $order);
 	}
+
 
 	
 	/**

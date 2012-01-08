@@ -117,6 +117,22 @@ class Tx_DlVoucher_Domain_Pdf_DocumentCreator  {
 
 
 	/**
+	 * Build the voucher Preview
+	 */
+	public function buildVoucherPreview() {
+		$this->loadDomPDFClasses();
+
+		$this->fluidRenderer->assign('order', $this->order);
+		$this->fluidRenderer->assign('preview', 1);
+
+		$templatePathAndFileName = t3lib_extMgm::extPath('dl_voucher') . 'Resources/Private/Templates/Pdf/Voucher.html';
+		$pdfOutputPath = $this->order->getVoucherPreviewPathAndFileName();
+		$this->buildAndSaveDocument($templatePathAndFileName, $pdfOutputPath);
+	}
+
+
+
+	/**
 	 * @param $templatePathAndFileName
 	 * @param $pdfOutputFileName
 	 */

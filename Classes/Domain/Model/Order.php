@@ -34,6 +34,15 @@
  */
 class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEntity {
 
+
+	/**
+	 * The uuid is a unique identifier for this order to be used before the
+	 * order is actually written to the database.
+	 *
+	 * @var string
+	 */
+	protected $uuid;
+
 	/**
 	 * info
 	 *
@@ -47,6 +56,13 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @var integer
 	 */
 	protected $voucherImage;
+
+
+	/**
+	 * @var Tx_Yag_Domain_Model_Item
+	 */
+	protected $voucherYAGImage;
+
 
 	/**
 	 * fromName
@@ -146,7 +162,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	protected $receiveVoucher;
 
 
-
 	/**
 	 * offer
 	 *
@@ -177,13 +192,14 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 
 
 	/**
-	 * __construct
 	 *
-	 * @return void
 	 */
-	public function __construct() {
-
+	public function __wakeup() {
+		if(!$this->objectManager) {
+			$this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
+		}
 	}
+
 
 	/**
 	 * Returns the info
@@ -193,6 +209,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	public function getInfo() {
 		return $this->info;
 	}
+
 
 	/**
 	 * Sets the info
@@ -215,10 +232,22 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 
 
 	/**
+	 * @param Tx_Yag_Domain_Model_Item $voucherYAGImage
+	 */
+	public function setVoucherYAGImage(Tx_Yag_Domain_Model_Item $voucherYAGImage) {
+		$this->voucherYAGImage = $voucherYAGImage;
+	}
+
+
+	/**
 	 * @return Tx_Yag_Domain_Model_Item
 	 */
 	public function getVoucherYAGImage() {
-		return $this->objectManager->get('Tx_Yag_Domain_Repository_ItemRepository')->findByUid($this->voucherImage);
+		if(!$this->voucherYAGImage) {
+			$this->voucherYAGImage = $this->objectManager->get('Tx_Yag_Domain_Repository_ItemRepository')->findByUid($this->voucherImage);
+		}
+
+		return $this->voucherYAGImage;
 	}
 
 	
@@ -529,6 +558,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		$this->setToName($order->getToName());
 		$this->setPrintAmount($order->getPrintAmount());
 		$this->setVoucherImage($order->getVoucherImage());
+		$this->setReceiveVoucher($order->getReceiveVoucher());
 	}
 
 
@@ -546,7 +576,6 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		$this->setEmail($order->getEmail());
 
 		$this->setAgbAccepted($order->getAgbAccepted());
-
 	}
 
 
@@ -600,15 +629,19 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @return string
 	 */
 	public function getDocumentDirectory() {
-		Tx_PtExtbase_Assertions_Assert::isPositiveInteger($this->uid);
+		$basePath = PATH_site . 'fileadmin/';
+		$pathToCreate = 'dl_voucher_documents/' . $this->getUUid() .'/';
+		$completePath = $basePath . $pathToCreate;
 
-		$basePath = PATH_site . '/fileadmin/';
-		$pathToCreate = 'dl_voucher_documents/' . $this->uid .'/';
-		if(!is_dir($path)) {
-			t3lib_div::mkdir_deep($basePath, $pathToCreate);
+		if(!is_dir($completePath)) {
+			$ret = t3lib_div::mkdir_deep($basePath, $pathToCreate);
+
+			if($ret) {
+				throw new Exception($ret);
+			}
 		}
 
-		return $path;
+		return $completePath;
 	}
 
 
@@ -627,6 +660,22 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function getVoucherPDFPathAndFileName() {
 		return $this->getDocumentDirectory() . 'Voucher.pdf';
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getVoucherPreviewPathAndFileName() {
+		return $this->getDocumentDirectory() . 'VoucherPreview.pdf';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getVoucherPreviewWebPath() {
+		$path = $this->getVoucherPreviewPathAndFileName();
+		return substr($path, strlen(PATH_site));
 	}
 
 
@@ -676,6 +725,18 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function getReceiveVoucher() {
 		return $this->receiveVoucher;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getUUid() {
+		if(!$this->uuid) {
+			$this->uuid = spl_object_hash($this);
+		}
+
+		return $this->uuid;
 	}
 
 }

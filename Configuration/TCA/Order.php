@@ -228,7 +228,7 @@ $TCA['tx_dlvoucher_domain_model_order'] = array(
 				'eval' => 'trim,required'
 			),
 		),
-		
+
 		'offer' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.offer',
