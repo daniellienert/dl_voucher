@@ -9,6 +9,12 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'Voucher'
 );
 
+Tx_Extbase_Utility_Extension::registerPlugin(
+	$_EXTKEY,
+	'OrderAdmin',
+	'Voucher Order Administration'
+);
+
 //$pluginSignature = str_replace('_','',$_EXTKEY) . '_' . voucher;
 //$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 //t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_' .voucher. '.xml');

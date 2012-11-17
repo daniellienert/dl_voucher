@@ -121,7 +121,7 @@
             <f:if condition="{order.offerIsSelected}">
                 <f:then>
 					<div class="voucher-value-header">
-						{order.offer.name}
+						{order.offer.name} <f:if condition="{order.printAmount}">({order.amount} &#0128;)</f:if>
 					</div>
 					<div class="voucher-value-description">
 						{order.offer.description}

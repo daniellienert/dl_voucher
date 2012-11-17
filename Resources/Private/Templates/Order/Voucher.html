@@ -9,6 +9,19 @@
 
     <f:render partial="FormErrors"/>
 
+	<script>
+		$(document).ready(function() {
+			$('#offerSelector').click(function() {
+				$('#offer').click();
+			});
+
+			$('#amountText').click(function() {
+				$('#amount').click();
+			});
+
+		});
+	</script>
+
     <f:form method="post" action="saveVoucher" name="order" object="{order}">
         <fieldset>
 			<div id="voucherCreator">
@@ -19,14 +32,14 @@
 						<f:translate key="tx_dlvoucher_domain_model_order.offer"/>
 					</label>
 
-					<f:form.select property="offer" options="{offers}" optionValueField="uid" optionLabelField="name" class="input-xlarge"/>
+					<f:form.select property="offer" options="{offers}" optionValueField="uid" optionLabelField="nameAndPrice" class="input-xlarge" id="offerSelector"/>
 
 					<label for="amount"class="radio">
 						<f:form.radio property="amountType" value="amount" checked="{order.amountIsSelected}" id="amount" class="input-xlarge"/>
 						<f:translate key="tx_dlvoucher_domain_model_order.amount"/>
 					</label>
 
-					<f:form.textfield property="amount" class="input-xlarge"/>
+					<f:form.textfield property="amount" class="input-xlarge" id="amountText"/>
 
 					<label for="printAmount" class="checkbox">
 						<f:form.checkbox property="printAmount" value="1" id="printAmount"/>

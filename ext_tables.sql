@@ -23,6 +23,8 @@ CREATE TABLE tx_dlvoucher_domain_model_order (
 	receive_voucher varchar(255) DEFAULT '' NOT NULL,
 	offer int(11) unsigned DEFAULT '0',
 	code varchar(255) DEFAULT '' NOT NULL,
+    payment_received tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    payment_date int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

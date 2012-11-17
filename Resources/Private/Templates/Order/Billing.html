@@ -5,9 +5,7 @@
 
 	<f:render partial="Order/StepTrace" arguments="{step2:1}"/>
 
-    <f:flashMessages/>
-
-    <f:render partial="FormErrors"/>
+	<f:flashMessages renderMode="div" class="label label-important"/>
 
     <f:form method="post" action="saveBilling" name="order" object="{order}" class="form-horizontal">
 		<div id="invoiceData">

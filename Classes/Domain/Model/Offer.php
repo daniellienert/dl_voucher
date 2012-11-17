@@ -147,5 +147,10 @@ class Tx_DlVoucher_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 		$this->price = $price;
 	}
 
+
+	public function getNameAndPrice() {
+		return sprintf('%s (%s €)', $this->name, $this->price);
+	}
+
 }
 ?>

@@ -5,7 +5,7 @@
 
 	<div class="span12"><a href="{order.invoiceWebPath}">Ihre Rechnung zum Download.</a></div>
 	<div class="span12">
-		<f:if condition="{0:receiveVoucher} == {0:'send'}">
+		<f:if condition="{0:order.receiveVoucher} == {0:'print'}">
 			<f:then>
 				<div class="span12"><a href="{order.voucherWebPath}">Ihr Gutschein zum Download.</a></div>
 			</f:then>
@@ -26,6 +26,10 @@
 			BLZ: 66490000<br>
 			Volksbank Offenburg
 		</address>
+
+		<br />
+
+		Bitte überweisen Sie: Der Gutschein erhält seine Gültigkeit erst nach dem Eingang der Überweisung.
 
 	</div>
 

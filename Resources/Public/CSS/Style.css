@@ -93,3 +93,8 @@ input.f3-form-error {
     float:left;
     padding: 0 20px 15px 0;
 }
+
+
+.form-horizontal .control-group {
+    margin-bottom: 15px;
+}

@@ -159,7 +159,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * @var string
 	 */
-	protected $receiveVoucher;
+	protected $receiveVoucher = 'print';
 
 
 	/**
@@ -174,6 +174,18 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @var string
 	 */
 	protected $code;
+
+
+	/**
+	 * @var int
+	 */
+	protected $paymentReceived;
+
+
+	/**
+	 * @var int
+	 */
+	protected $paymentDate;
 
 
 	/**
@@ -311,7 +323,11 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @return integer $amount
 	 */
 	public function getAmount() {
-		return $this->amount;
+		if($this->amountType == 'offer' && $this->offer instanceof Tx_DlVoucher_Domain_Model_Offer) {
+			return $this->offer->getPrice();
+		} else {
+			return $this->amount;
+		}
 	}
 
 	/**
@@ -587,6 +603,21 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	}
 
 
+	/**
+	 * @return bool
+	 */
+	public function isBillAddressValid() {
+		if(trim($this->getFirstName())
+			&& trim($this->getLastName())
+			&& trim($this->getStreet())
+			&& trim($this->getZip())
+			&& trim($this->getCity())) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 
 	/**
 	 * @return string
@@ -774,6 +805,34 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function setUuid($uuid) {
 		$this->uuid = $uuid;
+	}
+
+	/**
+	 * @param int $paymentDate
+	 */
+	public function setPaymentDate($paymentDate) {
+		$this->paymentDate = $paymentDate;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPaymentDate() {
+		return $this->paymentDate;
+	}
+
+	/**
+	 * @param int $paymentReceived
+	 */
+	public function setPaymentReceived($paymentReceived) {
+		$this->paymentReceived = $paymentReceived;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPaymentReceived() {
+		return $this->paymentReceived;
 	}
 
 
