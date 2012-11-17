@@ -1,3 +1,14 @@
+#content {
+    border: 1px solid #4D4D4D;
+    background-color: #FCFCFC;
+    height: 465px;
+    width: 935px;
+    margin-left: 5px;
+    top: 5px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+
 input.f3-form-error {
     background-color:#FF9F9F;
     border: 1px #FF0000 solid;
@@ -33,7 +44,7 @@ input.f3-form-error {
 
 .imageSelector {
     float:left;
-    width:525px;
+    width:510px;
 }
 
 .voucherPreview {
@@ -43,7 +54,7 @@ input.f3-form-error {
 }
 
 .voucherImage {
-    width:175px;
+    width:170px;
     float:left;
 }
 
@@ -66,7 +77,7 @@ input.f3-form-error {
 
 .stepForward {
     float:right;
-    padding: 0 20px 15px 0;
+    padding: 0 7px 0 0;
 }
 
 .stepBackward {

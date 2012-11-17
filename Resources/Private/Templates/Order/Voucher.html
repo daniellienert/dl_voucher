@@ -10,75 +10,47 @@
     <f:render partial="FormErrors"/>
 
     <f:form method="post" action="saveVoucher" name="order" object="{order}">
-        <div>
+        <fieldset>
 			<div id="voucherCreator">
-				<div class="formular dl-voucher-whitebox">
+				<div class="formular">
 
-					<div>
-						<label for="offer">
-							<f:translate key="tx_dlvoucher_domain_model_order.offer"/>
-						</label><br/>
-						<f:form.radio property="amountType" value="offer" checked="{order.offerIsSelected}" id="offer" />
-						<f:form.select property="offer" options="{offers}" optionValueField="uid" optionLabelField="name"/>
-					</div>
+					<label for="offer" class="radio">
+						<f:form.radio property="amountType" value="offer" checked="{order.offerIsSelected}" id="offer" class="input-xlarge"/>
+						<f:translate key="tx_dlvoucher_domain_model_order.offer"/>
+					</label>
 
-					<div style="padding-top:5px">
-						<label for="amount">
-							<f:translate key="tx_dlvoucher_domain_model_order.amount"/>
-						</label><br/>
-						<f:form.radio property="amountType" value="amount" checked="{order.amountIsSelected}" id="amount"/>
-						<f:form.textfield property="amount"/>
-					</div>
+					<f:form.select property="offer" options="{offers}" optionValueField="uid" optionLabelField="name" class="input-xlarge"/>
 
-					<div style="padding-left:23px;">
-						<label for="printAmount">
-							<f:form.checkbox property="printAmount" value="1" id="printAmount"/>
-							<f:translate key="tx_dlvoucher_domain_model_order.print_amount"/>
-						</label>
-					</div>
+					<label for="amount"class="radio">
+						<f:form.radio property="amountType" value="amount" checked="{order.amountIsSelected}" id="amount" class="input-xlarge"/>
+						<f:translate key="tx_dlvoucher_domain_model_order.amount"/>
+					</label>
 
-					<br />
+					<f:form.textfield property="amount" class="input-xlarge"/>
 
-					<div>
-						<label for="fromName">
-							<f:translate key="tx_dlvoucher_domain_model_order.from_name"/>
-						</label><br/>
-						<div style="padding-left:23px;">
-							<f:form.textfield property="fromName" id="fromName"/>
-						</div>
-					</div>
+					<label for="printAmount" class="checkbox">
+						<f:form.checkbox property="printAmount" value="1" id="printAmount"/>
+						<f:translate key="tx_dlvoucher_domain_model_order.print_amount"/>
+					</label>
 
-					<div style="padding-top:5px">
-						<label for="toName">
-							<f:translate key="tx_dlvoucher_domain_model_order.to_name"/>
-						</label>
-						<div style="padding-left:23px;">
-							<f:form.textfield property="toName" id="toname"/>
-						</div>
-					</div>
+					<label for="fromName"><f:translate key="tx_dlvoucher_domain_model_order.from_name"/></label>
+					<f:form.textfield property="fromName" id="fromName" class="input-xlarge"/>
 
-					<div style="padding-top:10px">
-						<label for="info">
-							<f:translate key="tx_dlvoucher_domain_model_order.info"/>
-						</label><br/>
-						<div style="padding-left:23px;">
-							<f:form.textarea property="info" cols="36" rows="2" id="info"/>
-						</div>
-					</div>
+					<label for="toName"><f:translate key="tx_dlvoucher_domain_model_order.to_name"/></label>
+					<f:form.textfield property="toName" id="toname" class="input-xlarge"/>
 
+					<label for="info"><f:translate key="tx_dlvoucher_domain_model_order.info"/></label>
+					<f:form.textarea property="info" cols="36" rows="1" id="info" class="input-xlarge"/>
 
+					<label for="sendVoucher" class="radio">
+						<f:form.radio property="receiveVoucher" value="send" id="sendVoucher"/>
+						<f:translate key="tx_dlvoucher_domain_model_order.send_Voucher"/>
+					</label>
 
-					<div  style="padding-top:10px">
-						<label for="sendVoucher">
-							<f:form.radio property="receiveVoucher" value="send" id="sendVoucher"/>
-							<f:translate key="tx_dlvoucher_domain_model_order.send_Voucher"/>
-						</label><br/>
-
-						<label for="printVoucher">
-							<f:form.radio property="receiveVoucher" value="print" id="printVoucher"/>
-							<f:translate key="tx_dlvoucher_domain_model_order.print_Voucher"/>
-						</label><br/>
-					</div>
+					<label for="printVoucher" class="radio">
+						<f:form.radio property="receiveVoucher" value="print" id="printVoucher"/>
+						<f:translate key="tx_dlvoucher_domain_model_order.print_Voucher"/>
+					</label>
 				</div>
 
 				<div class="imageSelector">
@@ -97,14 +69,14 @@
 						</div>
 					</f:for>
 				</div>
-				<div style="clear:both"></div>
+
 
 				<div class="stepForward">
-					<f:form.submit value="Weiter"/>
+					<f:form.submit value="Weiter" class="btn"/>
 				</div>
+				<div style="clear:both"></div>
 			</div>
         </div>
-
-    </div>
+	</fieldset>
     </f:form>
 </f:section>

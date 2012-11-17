@@ -9,73 +9,88 @@
 
     <f:render partial="FormErrors"/>
 
-    <f:form method="post" action="saveBilling" name="order" object="{order}">
+    <f:form method="post" action="saveBilling" name="order" object="{order}" class="form-horizontal">
 		<div id="invoiceData">
-			<div  class="dl-voucher-whitebox">
-				<div style="float:left">
-					<label for="firstName">
-						<f:translate key="tx_dlvoucher_domain_model_order.first_name"/>
-						<span class="required">*</span>
-					</label><br/>
-					<f:form.textfield property="firstName"/>
+			<div class="control-group">
+				<label class="control-label" for="firstName">
+					<f:translate key="tx_dlvoucher_domain_model_order.first_name"/>
+					<span class="required">*</span>
+				</label>
+				<div class="controls">
+					<f:form.textfield property="firstName" id="firstName"/>
 				</div>
+			</div>
 
-				<div>
-					<label for="lastName">
-						<f:translate key="tx_dlvoucher_domain_model_order.last_name"/>
-						<span class="required">*</span>
-					</label><br/>
-					<f:form.textfield property="lastName"/>
+			<div class="control-group">
+				<label class="control-label" for="lastName">
+					<f:translate key="tx_dlvoucher_domain_model_order.last_name"/>
+					<span class="required">*</span>
+				</label>
+				<div class="controls">
+					<f:form.textfield property="lastName" id="lastName"/>
 				</div>
+			</div>
 
-				<label for="street">
+			<div class="control-group">
+				<label class="control-label" for="street">
 					<f:translate key="tx_dlvoucher_domain_model_order.street"/>
 					<span class="required">*</span>
-				</label><br/>
-				<f:form.textfield property="street" size="43"/>
-				<br/>
-
-				<div style="float:left;">
-					<label for="zip">
-						<f:translate key="tx_dlvoucher_domain_model_order.zip"/>
-						<span class="required">*</span>
-					</label><br/>
-					<f:form.textfield property="zip"/>
+				</label>
+				<div class="controls">
+					<f:form.textfield property="street" id="street"/>
 				</div>
+			</div>
 
-				<div>
-					<label for="city">
-						<f:translate key="tx_dlvoucher_domain_model_order.city"/>
-						<span class="required">*</span>
-					</label><br/>
-					<f:form.textfield property="city"/>
-					<br/>
+			<div class="control-group">
+				<label class="control-label" for="zip">
+					<f:translate key="tx_dlvoucher_domain_model_order.zip"/>
+					<span class="required">*</span>
+				</label>
+				<div class="controls">
+					<f:form.textfield property="zip" id="zip"/>
 				</div>
+			</div>
 
-				<label for="email">
+			<div class="control-group">
+				<label class="control-label" for="city">
+					<f:translate key="tx_dlvoucher_domain_model_order.city"/>
+					<span class="required">*</span>
+				</label>
+				<div class="controls">
+					<f:form.textfield property="city" id="city"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="email">
 					<f:translate key="tx_dlvoucher_domain_model_order.email"/>
 					<span class="required">*</span>
-				</label><br/>
-				<f:form.textfield property="email"/>
-				<br/>
+				</label>
+				<div class="controls">
+					<f:form.textfield property="email" id="email"/>
+				</div>
+			</div>
 
-				<label for="agbAccepted">
-					<f:translate key="tx_dlvoucher_domain_model_order.agb_accepted"/>
-					<span class="required">*</span>
-				</label><br/>
-				<f:form.checkbox property="agbAccepted" value="1"/>
-				<br/>
+			<div class="control-group">
+				<div class="controls">
+					<label for="agbAccepted"  class="checkbox">
+						<f:form.checkbox property="agbAccepted" value="1" id="agbAccepted"/>
+						<f:translate key="tx_dlvoucher_domain_model_order.agb_accepted"/>
+						<f:link.page target="blank" pageUid="voucheragb">AGB</f:link.page>
+						<span class="required">*</span>
+					</label>
+				</div>
 			</div>
 
 			<div class="stepForward">
-				<f:form.submit value="Weiter"/>
+				<f:form.submit value="Weiter" class="btn"/>
 			</div>
 		</div>
 	</f:form>
 
 	<f:form method="post" action="voucher">
 		<div class="stepBack">
-			<f:form.submit value="Zurück"/>
+			<f:form.submit value="Zurück" class="btn"/>
 		</div>
 	</f:form>
 

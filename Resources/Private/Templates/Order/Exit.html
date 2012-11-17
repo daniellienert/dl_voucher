@@ -1,0 +1,33 @@
+<h2 xmlns="http://www.w3.org/1999/html" xmlns:f="http://www.w3.org/1999/html">Vielen Dank</h2>
+
+<div class="row-fluid">
+	<div class="span12">Vielen Dank für Ihre Gutscheinbestellung.</div>
+
+	<div class="span12"><a href="{order.invoiceWebPath}">Ihre Rechnung zum Download.</a></div>
+	<div class="span12">
+		<f:if condition="{0:receiveVoucher} == {0:'print'}">
+			<f:then>
+				<div class="span12"><a href="{order.voucherWebPath}">Ihr Gutschein zum Download.</a></div>
+			</f:then>
+			<f:else>
+				Der Gutschein wird Ihnen in den nächsten Tagen zugeschickt.
+			</f:else>
+		</f:if>
+	</div>
+
+	<div class="span12">
+
+		Bitte überweisen Sie den Rechnungsbetrag von <b>{order.gross} €</b> incl. Mehrwertsteuer auf folgendes Konto:
+
+		<br /><br />
+		<address>
+			<strong>Foto Lienert</strong><br>
+			Kto: 2046911<br>
+			BLZ: 66490000<br>
+			Volksbank Offenburg
+		</address>
+
+	</div>
+
+
+</div>

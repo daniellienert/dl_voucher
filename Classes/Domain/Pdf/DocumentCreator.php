@@ -140,7 +140,6 @@ class Tx_DlVoucher_Domain_Pdf_DocumentCreator  {
 
 		$this->fluidRenderer->setTemplatePathAndFilename($templatePathAndFileName);
 		$html = $this->fluidRenderer->render();
-
 		$dompdf = new DOMPDF();
 		$dompdf->load_html($html);
 		$dompdf->render();

@@ -1,3 +1,6 @@
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:dl_voucher/Configuration/TypoScript/ExtList/VoucherAdminList.ts">
+
 plugin.tx_dlvoucher {
 	view {
 		templateRootPath = {$plugin.tx_dlvoucher.view.templateRootPath}
@@ -13,6 +16,7 @@ plugin.tx_dlvoucher {
 
 page.includeCSS {
     jQueryUi = EXT:dl_voucher/Resources/Public/CSS/jquery-ui-1.8.16.custom.css
+    bootstrap = EXT:dl_voucher/Resources/Public/Bootstrap/css/bootstrap.css
     dlVoucher = EXT:dl_voucher/Resources/Public/CSS/Style.css
 }
 
@@ -25,8 +29,8 @@ plugin.tx_yag.settings.themes.dlVoucher {
 
     resolutionConfigs {
  		thumb {
-    		height = 115c
-    		width = 170c
+    		height = 105c
+    		width = 160c
     	}
 
     	voucher {

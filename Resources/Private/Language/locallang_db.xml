@@ -6,7 +6,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="tx_dlvoucher_domain_model_order">Order</label>
+			<label index="tx_dlvoucher_domain_model_order">Bestellung</label>
 			<label index="tx_dlvoucher_domain_model_order.info">Info</label>
 			<label index="tx_dlvoucher_domain_model_order.voucher_image">Voucher Image</label>
 			<label index="tx_dlvoucher_domain_model_order.from_name">From Name</label>
@@ -22,11 +22,11 @@
 			<label index="tx_dlvoucher_domain_model_order.print_amount">Print Amount</label>
 			<label index="tx_dlvoucher_domain_model_order.agb_accepted">Agb Accepted</label>
 			<label index="tx_dlvoucher_domain_model_order.offer">Offer</label>
-			<label index="tx_dlvoucher_domain_model_offer">Offer</label>
+			<label index="tx_dlvoucher_domain_model_offer">Angebot</label>
 			<label index="tx_dlvoucher_domain_model_offer.name">Name</label>
-			<label index="tx_dlvoucher_domain_model_offer.description">Description</label>
-			<label index="tx_dlvoucher_domain_model_offer.type">Type</label>
-			<label index="tx_dlvoucher_domain_model_offer.price">Price</label>
+			<label index="tx_dlvoucher_domain_model_offer.description">Beschreibung</label>
+			<label index="tx_dlvoucher_domain_model_offer.type">Typ</label>
+			<label index="tx_dlvoucher_domain_model_offer.price">Preis</label>
 		</languageKey>
 	</data>
 </T3locallang>

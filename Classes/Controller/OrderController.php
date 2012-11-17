@@ -128,8 +128,6 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	 */
 	public function saveVoucherAction(Tx_DlVoucher_Domain_Model_Order $order = NULL) {
 
-		// TODO Validierung
-
 		$sessionOrder = $this->orderRepository->restoreFromSession();
 		$sessionOrder->setVoucherValuesFromOrder($order);
 		$this->orderRepository->persistToSession($sessionOrder);
@@ -180,20 +178,29 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	/**
 	 * action create
 	 *
-	 * @param $newOrder
 	 * @return void
 	 */
-	public function createAction(Tx_DlVoucher_Domain_Model_Order $newOrder) {
-		$this->orderRepository->add($newOrder);
+	public function createAction() {
+		$order = $this->orderRepository->restoreFromSession();
+		$this->orderRepository->add($order);
 
 		$this->objectManager->get('Tx_Extbase_Persistence_ManagerInterface')->persistAll();
 
 		$documentCreator = $this->objectManager->get('Tx_DlVoucher_Domain_Pdf_DocumentCreator'); /** @var $documentCreator Tx_DlVoucher_Domain_Pdf_DocumentCreator */
-		$documentCreator->setOrder($newOrder);
+		$documentCreator->setOrder($order);
 		$documentCreator->build();
 
+		$this->redirect('exit');
 	}
 
+
+	/**
+	 * Show an overview
+	 */
+	public function exitAction() {
+		$order = $this->orderRepository->restoreFromSession();
+		$this->view->assign('order', $order);
+	}
 
 
 	/**

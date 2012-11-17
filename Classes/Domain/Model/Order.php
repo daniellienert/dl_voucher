@@ -657,6 +657,14 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	}
 
 
+	/**
+	 * @return string
+	 */
+	public function getInvoiceWebPath() {
+		$path = $this->getInvoicePDFPathAndFileName();
+		return substr($path, strlen(PATH_site));
+	}
+
 
 	/**
 	 * @return string
@@ -669,9 +677,20 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * @return string
 	 */
+	public function getVoucherWebPath() {
+		$path = $this->getVoucherPDFPathAndFileName();
+		return substr($path, strlen(PATH_site));
+	}
+
+
+	/**
+	 * @return string
+	 */
 	public function getVoucherPreviewPathAndFileName() {
 		return $this->getDocumentDirectory() . 'VoucherPreview.pdf';
 	}
+
+
 
 	/**
 	 * @return string
@@ -680,6 +699,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 		$path = $this->getVoucherPreviewPathAndFileName();
 		return substr($path, strlen(PATH_site));
 	}
+
 
 
 	/**

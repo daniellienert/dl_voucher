@@ -7,25 +7,34 @@
     <f:flashMessages/>
 
 	<div class="formular dl-voucher-whitebox">
-		<h1>Gutschein</h1>
+		<h3>Gutschein</h3>
+
+		<div class="row-fluid">
+			<f:if condition="{order.offerIsSelected}">
+				<f:then>
+					<div class="span4">für</div>
+					<div class="span8">{order.offer.name}</div>
+				</f:then>
+				<f:else>
+					<div class="span4">in Höhe von</div>
+					<div class="span8">{order.amount} €</div>
+				</f:else>
+			</f:if>
+		</div>
 
 		<dl>
-			<f:if condition="{order.offerIsSelected}">
-				<f:then><dt>für</dt> <dd>{order.offer.name}</dd></f:then>
-				<f:else><dt>in Höhe von</dt> {order.amount} €</dd></f:else>
-			</f:if>
-
 			<dt>von:</dt> <dd>{order.fromName}</dd>
 			<dt>für:</dt> <dd>{order.toName}</dd>
 			<dt>Text:</dt><dd>{order.info}</dd>
 		</dl>
 
-		<h1>Rechnungsadresse</h1>
-		<dl>
-			<dt>Name:</dt><dd>{order.fullname}</dd>
-			<dt>Straße:</dt><dd>{order.street}</dd>
-			<dt>Ort:</dt><dd>{order.zip} {order.city}</dd>
-		</dl>
+		<h3>Rechnungsadresse</h3>
+
+		<address>
+			<strong>{order.fullname}</strong><br>
+			{order.street}<br>
+			{order.zip} {order.city}<br>
+		</address>
 
 	</div>
 
@@ -40,13 +49,13 @@
 
 	<f:form method="post" action="billing">
 		<div class="stepBack">
-			<f:form.submit value="Zurück"/>
+			<f:form.submit value="Zurück" class="btn"/>
 		</div>
 	</f:form>
 	
 	<f:form method="post" action="create">
 		<div class="stepForward" style="margin:0; margin-top:-25px">
-			<f:form.submit value="Gutschein bestellen"/>
+			<f:form.submit value="Gutschein bestellen" class="btn"/>
 		</div>
 	</f:form>
 
