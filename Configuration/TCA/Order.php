@@ -93,6 +93,15 @@ $TCA['tx_dlvoucher_domain_model_order'] = array(
 				),
 			),
 		),
+		'uuid' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.uuid',
+			'config' => array(
+				'type' => 'input',
+				'size' => 50,
+				'eval' => 'trim,required'
+			),
+		),
 		'info' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:dl_voucher/Resources/Private/Language/locallang_db.xml:tx_dlvoucher_domain_model_order.info',

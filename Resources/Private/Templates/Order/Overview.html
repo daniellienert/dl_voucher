@@ -6,7 +6,7 @@
 
     <f:flashMessages/>
 
-	<div class="formular dl-voucher-whitebox">
+	<div class="formular">
 		<h3>Gutschein</h3>
 
 		<div class="row-fluid">
@@ -47,16 +47,23 @@
 
 	<div style="clear:both"></div>
 
-	<f:form method="post" action="billing">
-		<div class="stepBack">
-			<f:form.submit value="Zurück" class="btn"/>
+	<div class="row-fluid">
+		<div class="span6">
+			<f:form method="post" action="billing">
+				<div class="stepBack">
+					<f:form.submit value="Zurück" class="btn"/>
+				</div>
+			</f:form>
 		</div>
-	</f:form>
-	
-	<f:form method="post" action="create">
-		<div class="stepForward" style="margin:0; margin-top:-25px">
-			<f:form.submit value="Gutschein bestellen" class="btn"/>
+
+		<div class="span6">
+			<f:form method="post" action="create">
+				<div class="stepForward" style="margin-top:10px">
+					<f:form.submit value="Gutschein bestellen" class="btn"/>
+				</div>
+			</f:form>
 		</div>
-	</f:form>
+	</div>
+
 
 </f:section>

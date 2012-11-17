@@ -5,14 +5,14 @@ CREATE TABLE tx_dlvoucher_domain_model_order (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-
+	uuid varchar(255) DEFAULT '' NOT NULL,
 	info text NOT NULL,
 	voucher_image int(11) DEFAULT '0' NOT NULL,
 	from_name varchar(255) DEFAULT '' NOT NULL,
 	to_name varchar(255) DEFAULT '' NOT NULL,
 	amount int(11) DEFAULT '0' NOT NULL,
 	first_name varchar(255) DEFAULT '' NOT NULL,
-	last_name int(11) DEFAULT '0' NOT NULL,
+	last_name varchar(255) DEFAULT '' NOT NULL,
 	street varchar(255) DEFAULT '' NOT NULL,
 	zip varchar(255) DEFAULT '' NOT NULL,
 	city varchar(255) DEFAULT '' NOT NULL,

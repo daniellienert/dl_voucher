@@ -11,6 +11,7 @@
 
     <f:form method="post" action="saveBilling" name="order" object="{order}" class="form-horizontal">
 		<div id="invoiceData">
+			<legend>Rechnungsdaten</legend>
 			<div class="control-group">
 				<label class="control-label" for="firstName">
 					<f:translate key="tx_dlvoucher_domain_model_order.first_name"/>
@@ -75,8 +76,9 @@
 				<div class="controls">
 					<label for="agbAccepted"  class="checkbox">
 						<f:form.checkbox property="agbAccepted" value="1" id="agbAccepted"/>
-						<f:translate key="tx_dlvoucher_domain_model_order.agb_accepted"/>
-						<f:link.page target="blank" pageUid="voucheragb">AGB</f:link.page>
+						Ich habe die
+						<f:link.page target="blank" pageUid="voucheragb">AGBs</f:link.page>
+						 gelesen und akzeptiert.
 						<span class="required">*</span>
 					</label>
 				</div>

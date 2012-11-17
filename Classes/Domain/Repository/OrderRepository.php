@@ -62,7 +62,7 @@ class Tx_DlVoucher_Domain_Repository_OrderRepository extends Tx_Extbase_Persiste
 		if(is_a($order, 'Tx_DlVoucher_Domain_Model_Order')) {
 			return $order;
 		} else {
-			return $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
+			return NULL;
 		}
 	}
 

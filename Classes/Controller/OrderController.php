@@ -109,9 +109,11 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 
 			$order = $this->orderRepository->restoreFromSession();
 
-			if(!$order) {
+			if($order === NULL) {
 				$order = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
 				$order->setVoucherImage($voucherAlbum->getItems()->current()->getUid());
+				$order->init();
+				$this->orderRepository->persistToSession($order);
 			}
 		}
 
@@ -129,6 +131,8 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	public function saveVoucherAction(Tx_DlVoucher_Domain_Model_Order $order = NULL) {
 
 		$sessionOrder = $this->orderRepository->restoreFromSession();
+		if(!$sessionOrder instanceof Tx_DlVoucher_Domain_Model_Order) $sessionOrder = $this->objectManager->get('Tx_DlVoucher_Domain_Model_Order');
+
 		$sessionOrder->setVoucherValuesFromOrder($order);
 		$this->orderRepository->persistToSession($sessionOrder);
 
@@ -149,7 +153,6 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 
 	public function  saveBillingAction(Tx_DlVoucher_Domain_Model_Order $order) {
 
-		// TODO Validation
 		$sessionOrder = $this->orderRepository->restoreFromSession();
 		$sessionOrder->setBillingValuesFromOrder($order);
 		$this->orderRepository->persistToSession($sessionOrder);
@@ -198,8 +201,16 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	 * Show an overview
 	 */
 	public function exitAction() {
+
 		$order = $this->orderRepository->restoreFromSession();
-		$this->view->assign('order', $order);
+
+		if($order instanceof Tx_DlVoucher_Domain_Model_Order) {
+			$this->view->assign('order', $order);
+			$this->orderRepository->cleanUpSession();
+		} else {
+			$this->forward('voucher');
+		}
+
 	}
 
 

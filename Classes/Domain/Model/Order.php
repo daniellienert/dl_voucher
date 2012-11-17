@@ -192,12 +192,17 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 
 
 	/**
-	 *
+	 * called on deserialize
 	 */
 	public function __wakeup() {
 		if(!$this->objectManager) {
 			$this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
 		}
+	}
+
+
+	public function init() {
+		$this->getUUid();
 	}
 
 
@@ -761,6 +766,16 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 
 		return $this->uuid;
 	}
+
+
+
+	/**
+	 * @param string $uuid
+	 */
+	public function setUuid($uuid) {
+		$this->uuid = $uuid;
+	}
+
 
 }
 ?>

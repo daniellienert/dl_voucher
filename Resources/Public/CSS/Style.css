@@ -54,8 +54,17 @@ input.f3-form-error {
 }
 
 .voucherImage {
+    padding-top: 3px;
     width:170px;
     float:left;
+}
+
+
+.voucher-image-radio {
+    margin:0 !important;
+    line-height: normal;
+    vertical-align:inherit;
+
 }
 
 .required {
