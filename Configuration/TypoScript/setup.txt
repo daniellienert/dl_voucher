@@ -7,8 +7,13 @@ plugin.tx_dlvoucher {
 		partialRootPath = {$plugin.tx_dlvoucher.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_dlvoucher.view.layoutRootPath}
 	}
+
 	persistence {
 		storagePid = {$plugin.tx_dlvoucher.persistence.storagePid}
+	}
+
+	settings {
+		voucherImageAlbum = {$plugin.tx_dlvoucher.settings.voucherImageAlbum}
 	}
 }
 

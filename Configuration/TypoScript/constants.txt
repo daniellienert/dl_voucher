@@ -11,4 +11,8 @@ plugin.tx_dlvoucher {
 		# cat=plugin.tx_dlvoucher//a; type=int+; label=Default storage PID
 		storagePid = 
 	}
+
+	settings {
+		voucherImageAlbum = 12
+	}
 }

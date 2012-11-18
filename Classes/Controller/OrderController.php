@@ -103,7 +103,7 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 	 */
 	public function voucherAction(Tx_DlVoucher_Domain_Model_Order $order = NULL) {
 
-		$voucherAlbum = $this->albumRepository->findByUid(12); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
+		$voucherAlbum = $this->albumRepository->findByUid((int) $this->settings['voucherImageAlbum']); /** @var $voucherAlbum Tx_Yag_Domain_Model_Album */
 
 		if($order == NULL) {
 
