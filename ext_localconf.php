@@ -20,12 +20,12 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'OrderAdmin',
 	array(
-		'OrderAdmin' => 'showList, markAsPaid',
+		'OrderAdmin' => 'showList, markAsPaid, markAsUnPaid',
 	),
 
 	// non-cacheable actions
 	array(
-		'OrderAdmin' => 'showList, markAsPaid',
+		'OrderAdmin' => 'showList, markAsPaid, markAsUnpaid',
 	)
 );
 

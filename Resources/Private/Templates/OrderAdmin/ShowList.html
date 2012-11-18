@@ -1,0 +1,111 @@
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+		
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+	<f:flashMessages renderMode="div" class="label label-important"/>
+
+	<!-- Filter -->
+
+	<div class="tx-ptextlist-filterbox" id="tx-ptextlist-filterbox-{filterbox.filterBoxIdentifier}">
+		<f:form class="well form-inline" id="tx-ptextlist-filterbox-form-{filterbox.filterBoxIdentifier}" controller="OrderAdmin" action="showList" pageUid="{filterbox.filterboxConfiguration.submitToPage}" method="{f:if(condition: '{config.baseConfig.useSession}', then: 'POST', else: 'GET')}">
+
+			<f:if condition="{filtersDontValidate}">
+				<div class="error">
+					<f:translate key="filterBox.errorInFilter" default="Errors in Filter" />
+				</div>
+			</f:if>
+
+			<f:for each="{filterbox}" as="filter">
+				<f:if condition="{filter.filterConfig.visible}">
+					<f:render partial="{filter.filterConfig.partialPath}" arguments="{filter : filter}" />
+				</f:if>
+			</f:for>
+
+			<div class="outer-wrapper tx-ptextlist-filterboxcontrols">
+				<f:if condition="{filterbox.filterboxConfiguration.showSubmit}">
+					<f:form.submit class="btn" value="{f:translate(key:'filterBox.submitFilters', default:'Submit Filters')}"/>
+				</f:if>
+				<f:if condition="{filterbox.filterboxConfiguration.showReset}">
+					<f:link.action action="reset" arguments="{filterboxIdentifier: filterbox.filterboxIdentifier}" class="reset">
+					<span>
+						<f:translate key="filterBox.resetFilters" default="Reset filters" />
+					</span>
+					</f:link.action>
+				</f:if>
+			</div>
+		</f:form>
+	</div>
+
+	<!-- List -->
+
+	<f:form method="post" action="saveBilling" name="order" object="{order}" class="form-horizontal">
+		<legend>Gutscheine</legend>
+
+		<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
+			<thead>
+			<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
+			</thead>
+			<tbody>
+			<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
+			<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
+			</tbody>
+		</table>
+	</f:form>
+
+
+	<!-- Pager -->
+
+	<div class="tx-ptextlist-pager-wrapper">
+		<div class="tx-ptextlist-pager-item-display">
+
+			<f:if condition="{pager.firstItemIndex}">
+				<f:translate key="pager.showItems" default="Show items from" /> <span class="first">{pager.firstItemIndex}</span>
+				<f:translate key="pager.to" default="to" />
+				<f:if condition="{pager.itemCount} < {pager.lastItemIndex}">
+					<f:then><span>{pager.itemCount}</span></f:then>
+					<f:else><span class="last">{pager.lastItemIndex}</span></f:else>
+				</f:if>
+				<f:translate key="pager.of" default="of" /> <span class="count">{pager.itemCount}</span>
+			</f:if>
+
+		</div>
+
+		<div class="pagination pagination-centered">
+			<ul>
+				<f:if condition="{pager.showFirstLink}">
+					<li class="first">
+						<extlist:link.action action="showList" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{pager.firstPage}')}">
+							&lt;&lt;
+						</extlist:link.action>
+					</li>
+				</f:if>
+
+				<f:if condition="{pager.showPreviousLink}">
+					<li><extlist:link.action action="showList" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{pager.previousPage}')}">&lt;</extlist:link.action></li>
+				</f:if>
+
+				<f:for each="{pager.pages}" key="i" as="pageNumber">
+					<f:if condition="{pager.currentPage} != {pageNumber}">
+						<f:then>
+							<li><extlist:link.action action="showList" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{i}')}">{pageNumber}</extlist:link.action></li>
+						</f:then>
+						<f:else>
+							<li class="active"><a href=="#">{pageNumber}</a></li>
+						</f:else>
+					</f:if>
+				</f:for>
+
+				<f:if condition="{pager.showNextLink}">
+					<li ><extlist:link.action action="showList" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{pager.nextPage}')}">&gt;</extlist:link.action></li>
+				</f:if>
+
+				<f:if condition="{pager.showLastLink}">
+					<li ><extlist:link.action action="showList" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{pager.lastPage}')}">&gt;&gt;</extlist:link.action></li>
+				</f:if>
+			</ul>
+		</div>
+	</div>
+
+</f:section>

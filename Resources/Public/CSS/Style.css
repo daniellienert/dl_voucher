@@ -13,7 +13,7 @@ input.f3-form-error {
     background-color:#FF9F9F;
     border: 1px #FF0000 solid;
 }
-
+/**
 .tx-dl-voucher table {
     border-collapse:separate;
     border-spacing:10px;
@@ -26,7 +26,7 @@ input.f3-form-error {
 .tx-dl-voucher table td {
     vertical-align:top;
 }
-
+*/
 .formular {
     float:left;
     width:390px;

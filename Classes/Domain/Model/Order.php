@@ -689,7 +689,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @return string
 	 */
 	public function getInvoicePDFPathAndFileName() {
-		return $this->getDocumentDirectory() . 'Invoice.pdf';
+		return $this->getDocumentDirectory() . 'Foto-Lienert-Rechnung.pdf';
 	}
 
 
@@ -706,7 +706,7 @@ class Tx_DlVoucher_Domain_Model_Order extends Tx_Extbase_DomainObject_AbstractEn
 	 * @return string
 	 */
 	public function getVoucherPDFPathAndFileName() {
-		return $this->getDocumentDirectory() . 'Voucher.pdf';
+		return $this->getDocumentDirectory() . 'Foto-Lienert-Gutschein.pdf';
 	}
 
 

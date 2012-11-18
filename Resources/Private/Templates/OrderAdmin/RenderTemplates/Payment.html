@@ -1,0 +1,11 @@
+<f:if condition="{data.paymentReceived}">
+	<f:then>
+		<f:link.action action="markAsUnPaid" arguments="{voucherUid:data.uid}" class="btn btn-success">Bezahlt</f:link.action> <br />
+		{data.paidDate}
+	</f:then>
+	<f:else>
+		<f:link.action action="markAsPaid" arguments="{voucherUid:data.uid}" class="btn btn-danger">Offen</f:link.action>
+	</f:else>
+</f:if>
+
+

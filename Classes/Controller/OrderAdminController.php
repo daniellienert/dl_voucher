@@ -32,19 +32,29 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  *
  */
-class Tx_DlVoucher_Controller_OrderAdminController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_DlVoucher_Controller_OrderAdminController extends Tx_PtExtbase_Controller_AbstractActionController {
 
 	/**
 	 * orderRepository
-	 *
 	 * @var Tx_DlVoucher_Domain_Repository_OrderRepository
 	 */
 	protected $orderRepository;
 
 
+	/**
+	 * @param Tx_DlVoucher_Domain_Repository_OrderRepository $orderRepository
+	 */
+	public function injectOrderRepository(Tx_DlVoucher_Domain_Repository_OrderRepository $orderRepository) {
+		$this->orderRepository = $orderRepository;
+	}
+
 
 	public function showListAction() {
+		$this->objectManager->get('Tx_PtExtlist_Extbase_ExtbaseContext')->setControllerContext($this->controllerContext);
+		$context = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByListIdentifier('voucherAdmin');
+		$listTemplateParts = $context->getAllListTemplateParts();
 
+		$this->view->assignMultiple($listTemplateParts);
 	}
 
 
@@ -52,7 +62,33 @@ class Tx_DlVoucher_Controller_OrderAdminController extends Tx_Extbase_MVC_Contro
 	 * @param int $voucherUid
 	 */
 	public function markAsPaidAction($voucherUid) {
+		$voucher = $this->orderRepository->findByUid($voucherUid); /** @var Tx_DlVoucher_Domain_Model_Order $voucher */
 
+		if($voucher instanceof Tx_DlVoucher_Domain_Model_Order) {
+			$voucher->setPaymentReceived(1);
+			$voucher->setPaymentDate(time());
+			$this->orderRepository->update($voucher);
+		}
+
+
+		$this->redirect('showList');
+	}
+
+
+	/**
+	 * @param int $voucherUid
+	 */
+	public function markAsUnPaidAction($voucherUid) {
+		$voucher = $this->orderRepository->findByUid($voucherUid); /** @var Tx_DlVoucher_Domain_Model_Order $voucher */
+
+		if($voucher instanceof Tx_DlVoucher_Domain_Model_Order) {
+			$voucher->setPaymentReceived(0);
+			$voucher->setPaymentDate(0);
+			$this->orderRepository->update($voucher);
+		}
+
+
+		$this->redirect('showList');
 	}
 }
 ?>
