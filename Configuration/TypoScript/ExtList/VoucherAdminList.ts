@@ -149,8 +149,8 @@ plugin.tx_ptextlist.settings.listConfig {
 				renderObj {
 					10 = TEXT
 					10.dataWrap (
-						<a href="fileadmin/dl_voucher_documents/{field:uuid}/Rechnung.pdf">Rechnung</a><br />
-						<a href="fileadmin/dl_voucher_documents/{field:uuid}/Gutschein.pdf">Gutschein</a><br />
+						<a href="fileadmin/dl_voucher_documents/{field:uuid}/Foto-Lienert-Rechnung.pdf">Rechnung</a><br />
+						<a href="fileadmin/dl_voucher_documents/{field:uuid}/Foto-Lienert-Gutschein.pdf">Gutschein</a><br />
 					)
 				}
 			}

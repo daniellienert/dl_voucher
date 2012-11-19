@@ -103,11 +103,16 @@ class Tx_DlVoucher_Domain_Pdf_DocumentCreator  {
 	public function build() {
 
 		$this->loadDomPDFClasses();
+
+		$this->fluidRenderer = $this->objectManager->get('Tx_Fluid_View_StandaloneView');
 		$this->fluidRenderer->assign('order', $this->order);
 
 		$templatePathAndFileName = t3lib_extMgm::extPath('dl_voucher') . 'Resources/Private/Templates/Pdf/Invoice.html';
 		$pdfOutputPath = $this->order->getInvoicePDFPathAndFileName();
 		$this->buildAndSaveDocument($templatePathAndFileName, $pdfOutputPath);
+
+		$this->fluidRenderer = $this->objectManager->get('Tx_Fluid_View_StandaloneView');
+		$this->fluidRenderer->assign('order', $this->order);
 
 		$templatePathAndFileName = t3lib_extMgm::extPath('dl_voucher') . 'Resources/Private/Templates/Pdf/Voucher.html';
 		$pdfOutputPath = $this->order->getVoucherPDFPathAndFileName();
@@ -140,6 +145,11 @@ class Tx_DlVoucher_Domain_Pdf_DocumentCreator  {
 
 		$this->fluidRenderer->setTemplatePathAndFilename($templatePathAndFileName);
 		$html = $this->fluidRenderer->render();
+
+		$handle = fopen($pdfOutputFileName . '.html', 'w');
+		fwrite($handle, $html);
+		fclose($handle);
+
 		$dompdf = new DOMPDF();
 		$dompdf->load_html($html);
 		$dompdf->render();

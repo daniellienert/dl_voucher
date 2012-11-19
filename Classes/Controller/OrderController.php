@@ -210,7 +210,8 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 		$documentCreator->setOrder($order);
 		$documentCreator->build();
 
-		$this->sendMail($order);
+		$this->sendMail($order, 'Company');
+		$this->sendMail($order, 'Customer');
 
 		$this->redirect('exit');
 	}
@@ -235,22 +236,34 @@ class Tx_DlVoucher_Controller_OrderController extends Tx_Extbase_MVC_Controller_
 
 	/**
 	 * @param Tx_DlVoucher_Domain_Model_Order $order
+	 * @param string $for Company / Customer
 	 */
-	protected function sendMail(Tx_DlVoucher_Domain_Model_Order $order) {
+	protected function sendMail(Tx_DlVoucher_Domain_Model_Order $order, $for) {
+
+		$fluidRenderer = $this->objectManager->get('Tx_Fluid_View_StandaloneView'); /** @var Tx_Fluid_View_StandaloneView $fluidRenderer */
+		$fluidRenderer->assign('order', $order);
+		$templatePathAndFileName = sprintf(t3lib_extMgm::extPath('dl_voucher') . 'Resources/Private/Templates/Mail/%s.html', $for);
+		$fluidRenderer->setTemplatePathAndFilename($templatePathAndFileName);
+		$mailText = $fluidRenderer->render();
+
 		$mail = t3lib_div::makeInstance('t3lib_mail_Message'); /** @var $mail t3lib_mail_Message */
 		$mail->setFrom('gutschein@foto-lienert.de', 'Foto Lienert Gutscheine');
-		$mail->setTo(array(
-			$order->getEmail() => $order->getFullName(),
-			'gutschein@foto-lienert.de' => 'Foto Lienert Gutscheine'
-		));
-		$mail->setSubject('Ihr Gutschein von Foto Lienert');
-		$mail->setBody('Test');
 
-		$mail->attach(Swift_Attachment::fromPath($order->getInvoicePDFPathAndFileName())->setFilename('Rechnung.pdf'));
-
-		if($order->getReceiveVoucher() == 'print') {
+		if($for == 'Company') {
+			$mail->setSubject('Neue Gutscheinbestellung');
+			$mail->setTo(array('gutschein@foto-lienert.de' => 'Foto Lienert Gutscheine'));
 			$mail->attach(Swift_Attachment::fromPath($order->getVoucherPDFPathAndFileName())->setFilename('Gutschein.pdf'));
+		} else {
+			$mail->setSubject('Ihr Gutschein von Foto Lienert');
+			$mail->setTo(array($order->getEmail() => $order->getFullName()));
+
+			if($order->getReceiveVoucher() == 'print') {
+				$mail->attach(Swift_Attachment::fromPath($order->getVoucherPDFPathAndFileName())->setFilename('Gutschein.pdf'));
+			}
 		}
+
+		$mail->setBody($mailText);
+		$mail->attach(Swift_Attachment::fromPath($order->getInvoicePDFPathAndFileName())->setFilename('Rechnung.pdf'));
 
 		$mail->send();
 	}

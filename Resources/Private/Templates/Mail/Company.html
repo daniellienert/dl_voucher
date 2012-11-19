@@ -1,0 +1,14 @@
+Neuer Gutschein wurde bestellt.
+
+<f:if condition="{0:order.receiveVoucher} == {0:'print'}">
+	<f:then>
+Der Kunde druckt den Gutschein selbst aus.
+	</f:then>
+	<f:else>
+Bitte den Gutschein ausdrucken und versenden an:
+
+{order.firstName} {order.lastName}
+{order.street}
+{order.zip} {order.city}
+	</f:else>
+</f:if>

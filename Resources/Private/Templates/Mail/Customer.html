@@ -1,0 +1,25 @@
+Guten Tag {order.firstName} {order.lastName},
+
+Vielen dank für Ihren Gutscheinkauf.
+
+<f:if condition="{0:order.receiveVoucher} == {0:'print'}">
+	<f:then>
+Im Anhang finden Sie Ihren Gutschein zum ausrucken sowie Ihre Rechnung.
+	</f:then>
+	<f:else>
+Im Anhang finden Sie Ihre Rechnung. Der Gutschein werden wir in den nächsten Tagen an Sie versenden.
+	</f:else>
+</f:if>
+
+Mit freundlichen Grüßen
+Claudia Lienert
+
+Foto Lienert
+Hauptstrasse 41
+77767 Appenweier-Urloffen
+
+Email: info@foto-lienert.de
+Website: http://www.foto-lienert.de
+
+Telefon: 07805 / 4280
+Fax: 07805 / 59380
